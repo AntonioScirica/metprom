@@ -37,8 +37,8 @@ const runtime = `
   var barEl   = root.querySelector('.js-bar');
   var phaseEls= Array.prototype.slice.call(q('.phase'));
 
-  var PHASES = ['Geometria','Tracciato','Foglio tecnico','Prende corpo','Macchina pronta'];
-  var MARKS  = [0, 2.2, 4.6, 6.6, 9.8];
+  var PHASES = ['Tracciato','Foglio tecnico','Quote rimosse','Prende corpo','Macchina pronta'];
+  var MARKS  = [0, 1.6, 3.6, 4.6, 8.4];
   var DROP = 6, SCALE_FROM = 0.992;
 
   parts.forEach(function(p){
@@ -51,13 +51,13 @@ const runtime = `
     gsap.set(strokes, { strokeDasharray:1, strokeDashoffset:1 });
     gsap.set(q('.draw'), { strokeDashoffset:1 });
     gsap.set(q('.sol'), { opacity:0 });
-    gsap.set(q('.node'), { opacity:0 });
+    gsap.set(q('#scaffold .draw'), { strokeDashoffset:0 });
+    gsap.set(q('.node'), { opacity:1 });
     gsap.set(q('.led'), { opacity:0 });
     gsap.set('#shadow', { opacity:0 });
     gsap.set('#annots', { opacity:0 });
     gsap.set('#sheet',  { opacity:0 });
     gsap.set('#scaffold', { opacity:1 });
-    gsap.set('#paper', { opacity:1 });
     gsap.set(parts, { x:0, y:0, rotation:0, scale:1 });
     gsap.set(machine, { scale:1 });
     machine.classList.remove('run');
@@ -75,41 +75,37 @@ const runtime = `
         for(var k = MARKS.length-1; k >= 0; k--){ if(t >= MARKS[k]){ i = k; break; } }
         if(lblEl) lblEl.textContent = PHASES[i];
         phaseEls.forEach(function(e,j){ e.classList.toggle('on', j === i); });
-        machine.classList.toggle('run', t > 10.2);
+        machine.classList.toggle('run', t > 8.6);
       }
     });
 
-    tl.to(q('#scaffold .draw'), { strokeDashoffset:0, duration:1.4, stagger:0.035, ease:'none' }, 0)
-      .to(q('.node'), { opacity:1, duration:0.35, stagger:0.025, ease:'none' }, 1.3);
-
     parts.forEach(function(p,i){
       tl.to(p.querySelectorAll('[pathLength]'),
-        { strokeDashoffset:0, duration:0.7, stagger:0.025, ease:'none' }, 2.2 + i*0.17);
+        { strokeDashoffset:0, duration:0.7, stagger:0.025, ease:'none' }, i*0.17);
     });
 
-    tl.to('#sheet', { opacity:1, duration:0.5, ease:'power1.out' }, 3.5)
-      .to(q('#sheet .draw'), { strokeDashoffset:0, duration:0.9, stagger:0.06, ease:'none' }, 3.5)
-      .to(q('#annots .draw'), { strokeDashoffset:0, duration:0.8, ease:'none' }, 3.9)
-      .to('#annots', { opacity:1, duration:0.7, ease:'power1.out' }, 3.9);
+    tl.to('#sheet', { opacity:1, duration:0.5, ease:'power1.out' }, 1.6)
+      .to(q('#sheet .draw'), { strokeDashoffset:0, duration:0.9, stagger:0.06, ease:'none' }, 1.6)
+      .to(q('#annots .draw'), { strokeDashoffset:0, duration:0.8, ease:'none' }, 1.9)
+      .to('#annots', { opacity:1, duration:0.7, ease:'power1.out' }, 1.9);
 
-    tl.to({}, { duration:1.0 }, 4.8);
+    tl.to({}, { duration:1.0 }, 2.8);
 
-    tl.to('#scaffold', { opacity:0, duration:0.8, ease:'power1.inOut' }, 5.8)
-      .to('#annots', { opacity:0, duration:0.9, ease:'power1.inOut' }, 6.0)
-      .to('#sheet',  { opacity:0, duration:0.9, ease:'power1.inOut' }, 6.2)
-      .to('#paper',  { opacity:0, duration:1.0, ease:'power1.inOut' }, 6.4);
+    tl.to('#scaffold', { opacity:0, duration:0.8, ease:'power1.inOut' }, 3.6)
+      .to('#annots', { opacity:0, duration:0.9, ease:'power1.inOut' }, 3.8)
+      .to('#sheet',  { opacity:0, duration:0.9, ease:'power1.inOut' }, 4.0);
 
     parts.forEach(function(p,i){
-      var at = 6.8 + i*0.3;
+      var at = 4.6 + i*0.3;
       tl.fromTo(p, { y:-DROP, scale:SCALE_FROM },
         { y:0, scale:1, duration:1.0, ease:'power2.out', immediateRender:false }, at);
       tl.to(p.querySelectorAll('.sol'), { opacity:1, duration:0.8, ease:'power1.out' }, at);
     });
 
-    tl.to(q('.led'), { opacity:1, duration:0.5, ease:'power1.out' }, 9.4)
-      .to('#shadow', { opacity:0.13, duration:1.2, ease:'power1.out' }, 9.7);
+    tl.to(q('.led'), { opacity:1, duration:0.5, ease:'power1.out' }, 7.6)
+      .to('#shadow', { opacity:0.13, duration:1.2, ease:'power1.out' }, 7.9);
 
-    tl.to({}, { duration:1.6 }, 10.4);
+    tl.to({}, { duration:1.6 }, 8.6);
     tl.timeScale(1.35);
   }
 

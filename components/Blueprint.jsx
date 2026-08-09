@@ -7,15 +7,16 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 const PHASES = [
-  'Geometria',
   'Tracciato',
   'Foglio tecnico',
+  'Quote rimosse',
   'Prende corpo',
   'Macchina pronta',
 ];
 
-/* tempi (in secondi di timeline) in cui inizia ciascuna fase */
-const MARKS = [0, 2.2, 4.6, 6.6, 9.8];
+/* tempi (in secondi di timeline) in cui inizia ciascuna fase.
+   La geometria di costruzione e' gia' in scena al fotogramma zero. */
+const MARKS = [0, 1.6, 3.6, 4.6, 8.4];
 
 /* La materializzazione usa un movimento uniforme per tutti i pezzi:
    una discesa di pochi pixel con micro-scala. Nessun valore arbitrario,
@@ -53,13 +54,15 @@ export default function Blueprint() {
       gsap.set('#annots', { opacity: 0 });
       gsap.set('#sheet', { opacity: 0 });
       gsap.set(q('.led'), { opacity: 0 });
-      gsap.set(q('.node'), { opacity: 0 });
+      /* la geometria di costruzione e' gia' visibile: nessun disegno da zero */
+      gsap.set(q('#scaffold .draw'), { strokeDashoffset: 0 });
+      gsap.set(q('.node'), { opacity: 1 });
 
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: root.current,
           start: 'top top',
-          end: '+=560%',
+          end: '+=460%',
           pin: true,
           scrub: 0.7,
           anticipatePin: 1,
@@ -72,42 +75,35 @@ export default function Blueprint() {
             for (let k = MARKS.length - 1; k >= 0; k--) { if (t >= MARKS[k]) { i = k; break; } }
             if (lblEl) lblEl.textContent = PHASES[i];
             phaseEls.forEach((e, j) => e.classList.toggle('on', j === i));
-            machine.classList.toggle('run', t > 10.2);
+            machine.classList.toggle('run', t > 8.6);
           },
         },
       });
 
-      /* 01 - GEOMETRIA: assi, ingombri, circonferenze di riferimento */
-      tl.to(q('#scaffold .draw'), { strokeDashoffset: 0, duration: 1.4, stagger: 0.035, ease: 'none' }, 0)
-        .to(q('.node'), { opacity: 1, duration: 0.35, stagger: 0.025, ease: 'none' }, 1.3);
-
-      /* 02 - TRACCIATO: la macchina si disegna sopra la geometria, pezzo per pezzo */
+      /* 01 - TRACCIATO: la macchina si disegna sopra la geometria, pezzo per pezzo */
       parts.forEach((p, i) => {
         tl.to(p.querySelectorAll('[pathLength]'), {
           strokeDashoffset: 0, duration: 0.7, stagger: 0.025, ease: 'none',
-        }, 2.2 + i * 0.17);
+        }, i * 0.17);
       });
 
-      /* 03 - il foglio si completa: cornice, cartiglio, quote e palloncini */
-      tl.to('#sheet', { opacity: 1, duration: 0.5, ease: 'power1.out' }, 3.5)
-        .to(q('#sheet .draw'), { strokeDashoffset: 0, duration: 0.9, stagger: 0.06, ease: 'none' }, 3.5)
-        .to(q('#annots .draw'), { strokeDashoffset: 0, duration: 0.8, ease: 'none' }, 3.9)
-        .to('#annots', { opacity: 1, duration: 0.7, ease: 'power1.out' }, 3.9);
+      /* 02 - il foglio si completa: cornice, cartiglio, quote e palloncini */
+      tl.to('#sheet', { opacity: 1, duration: 0.5, ease: 'power1.out' }, 1.6)
+        .to(q('#sheet .draw'), { strokeDashoffset: 0, duration: 0.9, stagger: 0.06, ease: 'none' }, 1.6)
+        .to(q('#annots .draw'), { strokeDashoffset: 0, duration: 0.8, ease: 'none' }, 1.9)
+        .to('#annots', { opacity: 1, duration: 0.7, ease: 'power1.out' }, 1.9);
 
-      /* pausa: il foglio tecnico completo resta leggibile */
-      tl.to({}, { duration: 1.0 }, 4.8);
+      /* pausa: il disegno tecnico completo resta leggibile */
+      tl.to({}, { duration: 1.0 }, 2.8);
 
-      /* 04 - geometria e foglio si ritirano */
-      tl.to('#scaffold', { opacity: 0, duration: 0.8, ease: 'power1.inOut' }, 5.8)
-        .to('#annots', { opacity: 0, duration: 0.9, ease: 'power1.inOut' }, 6.0)
-        .to('#sheet', { opacity: 0, duration: 0.9, ease: 'power1.inOut' }, 6.2)
-        .to('#paper', { opacity: 0, duration: 1.0, ease: 'power1.inOut' }, 6.4);
+      /* 03 - geometria, quote e cornice si ritirano */
+      tl.to('#scaffold', { opacity: 0, duration: 0.8, ease: 'power1.inOut' }, 3.6)
+        .to('#annots', { opacity: 0, duration: 0.9, ease: 'power1.inOut' }, 3.8)
+        .to('#sheet', { opacity: 0, duration: 0.9, ease: 'power1.inOut' }, 4.0);
 
-      /* 05 - ogni pezzo prende materia, in sequenza 01 -> 10.
-         fromTo con immediateRender:false: lo stato di partenza viene applicato
-         solo quando il tween inizia, cosi' prima il disegno resta immobile. */
+      /* 04 - ogni pezzo prende materia, in sequenza 01 -> 10 */
       parts.forEach((p, i) => {
-        const at = 6.8 + i * 0.3;
+        const at = 4.6 + i * 0.3;
         tl.fromTo(
           p,
           { y: -DROP, scale: SCALE_FROM },
@@ -117,11 +113,11 @@ export default function Blueprint() {
         tl.to(p.querySelectorAll('.sol'), { opacity: 1, duration: 0.8, ease: 'power1.out' }, at);
       });
 
-      /* 06 - finitura e avvio */
-      tl.to(q('.led'), { opacity: 1, duration: 0.5, ease: 'power1.out' }, 9.4)
-        .to('#shadow', { opacity: 0.13, duration: 1.2, ease: 'power1.out' }, 9.7);
+      /* 05 - avvio */
+      tl.to(q('.led'), { opacity: 1, duration: 0.5, ease: 'power1.out' }, 7.6)
+        .to('#shadow', { opacity: 0.13, duration: 1.2, ease: 'power1.out' }, 7.9);
 
-      tl.to({}, { duration: 1.4 }, 10.4);
+      tl.to({}, { duration: 1.4 }, 8.6);
     }, root);
 
     return () => ctx.revert();
@@ -133,16 +129,13 @@ export default function Blueprint() {
         <div className="stage-bar">
           <span className="ttl">01 — Dal foglio tecnico alla macchina</span>
           <span className="rd">
-            <span className="js-pct">0</span>% · <span className="js-lbl">Geometria</span>
+            <span className="js-pct">0</span>% · <span className="js-lbl">Tracciato</span>
             <span className="js-hint" />
           </span>
         </div>
 
         <div className="stage-svg">
           <svg viewBox="0 0 1000 680">
-            {/* FOGLIO */}
-            <rect id="paper" x="30" y="24" width="940" height="632" fill="#ffffff" />
-
             {/* CORNICE + CARTIGLIO */}
             <g id="sheet">
               <rect className="sheet draw" x="30" y="24" width="940" height="632" pathLength="1" />
@@ -357,9 +350,9 @@ export default function Blueprint() {
         <div className="stage-foot">
           <div className="pbar"><i className="js-bar" /></div>
           <div className="phase-row">
-            <span className="phase on">01 Geometria</span>
-            <span className="phase">02 Tracciato</span>
-            <span className="phase">03 Foglio tecnico</span>
+            <span className="phase on">01 Tracciato</span>
+            <span className="phase">02 Foglio tecnico</span>
+            <span className="phase">03 Quote rimosse</span>
             <span className="phase">04 Prende corpo</span>
             <span className="phase">05 Macchina pronta</span>
           </div>
