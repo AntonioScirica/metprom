@@ -17,19 +17,11 @@ const PHASES = [
 /* tempi (in secondi di timeline) in cui inizia ciascuna fase */
 const MARKS = [0, 2.2, 4.6, 6.6, 9.8];
 
-/* offset di "assestamento" per ciascuno dei 10 pezzi */
-const SETTLE = [
-  { x: 0, y: 26, r: 0 },
-  { x: -8, y: 16, r: -1.2 },
-  { x: 0, y: -30, r: 0 },
-  { x: -34, y: -8, r: -22 },
-  { x: 30, y: 12, r: 3 },
-  { x: 26, y: -16, r: -26 },
-  { x: 36, y: -22, r: 30 },
-  { x: 10, y: -30, r: 1.5 },
-  { x: 26, y: 24, r: 4 },
-  { x: -36, y: 16, r: -3 },
-];
+/* La materializzazione usa un movimento uniforme per tutti i pezzi:
+   una discesa di pochi pixel con micro-scala. Nessun valore arbitrario,
+   nessuna rotazione: l'occhio legge un ordine, non un sobbalzo. */
+const DROP = 6;      // px di discesa
+const SCALE_FROM = 0.992;
 
 export default function Blueprint() {
   const root = useRef(null);
@@ -111,19 +103,23 @@ export default function Blueprint() {
         .to('#sheet', { opacity: 0, duration: 0.9, ease: 'power1.inOut' }, 6.2)
         .to('#paper', { opacity: 0, duration: 1.0, ease: 'power1.inOut' }, 6.4);
 
-      /* 05 - ogni pezzo prende materia, in sequenza 01 -> 10 */
+      /* 05 - ogni pezzo prende materia, in sequenza 01 -> 10.
+         fromTo con immediateRender:false: lo stato di partenza viene applicato
+         solo quando il tween inizia, cosi' prima il disegno resta immobile. */
       parts.forEach((p, i) => {
         const at = 6.8 + i * 0.3;
-        const s = SETTLE[i];
-        tl.to(p, { x: s.x, y: s.y, rotation: s.r, duration: 0.45, ease: 'power2.in' }, at);
-        tl.to(p, { x: 0, y: 0, rotation: 0, duration: 1.0, ease: 'power3.out' }, at + 0.45);
-        tl.to(p.querySelectorAll('.sol'), { opacity: 1, duration: 0.8, ease: 'power1.out' }, at + 0.5);
+        tl.fromTo(
+          p,
+          { y: -DROP, scale: SCALE_FROM },
+          { y: 0, scale: 1, duration: 1.0, ease: 'power2.out', immediateRender: false },
+          at
+        );
+        tl.to(p.querySelectorAll('.sol'), { opacity: 1, duration: 0.8, ease: 'power1.out' }, at);
       });
 
       /* 06 - finitura e avvio */
       tl.to(q('.led'), { opacity: 1, duration: 0.5, ease: 'power1.out' }, 9.4)
-        .to('#shadow', { opacity: 0.13, duration: 1.2, ease: 'power1.out' }, 9.7)
-        .to(machine, { scale: 1.015, duration: 1.4, ease: 'power2.out' }, 9.7);
+        .to('#shadow', { opacity: 0.13, duration: 1.2, ease: 'power1.out' }, 9.7);
 
       tl.to({}, { duration: 1.4 }, 10.4);
     }, root);
