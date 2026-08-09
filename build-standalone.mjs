@@ -38,7 +38,7 @@ const runtime = `
   var phaseEls= Array.prototype.slice.call(q('.phase'));
 
   var PHASES = ['Tracciato','Foglio tecnico','Quote rimosse','Prende corpo','Macchina pronta'];
-  var MARKS  = [0, 1.6, 3.6, 4.6, 8.4];
+  var MARKS  = [0, 1.6, 3.1, 3.9, 7.0];
   var DROP = 6, SCALE_FROM = 0.992;
 
   parts.forEach(function(p){
@@ -75,7 +75,7 @@ const runtime = `
         for(var k = MARKS.length-1; k >= 0; k--){ if(t >= MARKS[k]){ i = k; break; } }
         if(lblEl) lblEl.textContent = PHASES[i];
         phaseEls.forEach(function(e,j){ e.classList.toggle('on', j === i); });
-        machine.classList.toggle('run', t > 8.6);
+        machine.classList.toggle('run', t > 6.9);
       }
     });
 
@@ -89,23 +89,23 @@ const runtime = `
       .to(q('#annots .draw'), { strokeDashoffset:0, duration:0.8, ease:'none' }, 1.9)
       .to('#annots', { opacity:1, duration:0.7, ease:'power1.out' }, 1.9);
 
-    tl.to({}, { duration:1.0 }, 2.8);
+    tl.to({}, { duration:0.4 }, 2.7);
 
-    tl.to('#scaffold', { opacity:0, duration:0.8, ease:'power1.inOut' }, 3.6)
-      .to('#annots', { opacity:0, duration:0.9, ease:'power1.inOut' }, 3.8)
-      .to('#sheet',  { opacity:0, duration:0.9, ease:'power1.inOut' }, 4.0);
+    tl.to('#scaffold', { opacity:0, duration:0.6, ease:'power1.inOut' }, 3.1)
+      .to('#annots', { opacity:0, duration:0.6, ease:'power1.inOut' }, 3.2)
+      .to('#sheet',  { opacity:0, duration:0.6, ease:'power1.inOut' }, 3.35);
 
     parts.forEach(function(p,i){
-      var at = 4.6 + i*0.3;
+      var at = 3.9 + i*0.22;
       tl.fromTo(p, { y:-DROP, scale:SCALE_FROM },
-        { y:0, scale:1, duration:1.0, ease:'power2.out', immediateRender:false }, at);
-      tl.to(p.querySelectorAll('.sol'), { opacity:1, duration:0.8, ease:'power1.out' }, at);
+        { y:0, scale:1, duration:0.8, ease:'power2.out', immediateRender:false }, at);
+      tl.to(p.querySelectorAll('.sol'), { opacity:1, duration:0.6, ease:'power1.out' }, at);
     });
 
-    tl.to(q('.led'), { opacity:1, duration:0.5, ease:'power1.out' }, 7.6)
-      .to('#shadow', { opacity:0.13, duration:1.2, ease:'power1.out' }, 7.9);
+    tl.to(q('.led'), { opacity:1, duration:0.5, ease:'power1.out' }, 6.2)
+      .to('#shadow', { opacity:0.13, duration:1.0, ease:'power1.out' }, 6.4);
 
-    tl.to({}, { duration:1.6 }, 8.6);
+    tl.to({}, { duration:1.6 }, 7.0);
     tl.timeScale(1.35);
   }
 

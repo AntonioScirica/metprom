@@ -16,7 +16,7 @@ const PHASES = [
 
 /* tempi (in secondi di timeline) in cui inizia ciascuna fase.
    La geometria di costruzione e' gia' in scena al fotogramma zero. */
-const MARKS = [0, 1.6, 3.6, 4.6, 8.4];
+const MARKS = [0, 1.6, 3.1, 3.9, 7.0];
 
 /* La materializzazione usa un movimento uniforme per tutti i pezzi:
    una discesa di pochi pixel con micro-scala. Nessun valore arbitrario,
@@ -62,7 +62,7 @@ export default function Blueprint() {
         scrollTrigger: {
           trigger: root.current,
           start: 'top top',
-          end: '+=460%',
+          end: '+=420%',
           pin: true,
           scrub: 0.7,
           anticipatePin: 1,
@@ -75,7 +75,7 @@ export default function Blueprint() {
             for (let k = MARKS.length - 1; k >= 0; k--) { if (t >= MARKS[k]) { i = k; break; } }
             if (lblEl) lblEl.textContent = PHASES[i];
             phaseEls.forEach((e, j) => e.classList.toggle('on', j === i));
-            machine.classList.toggle('run', t > 8.6);
+            machine.classList.toggle('run', t > 6.9);
           },
         },
       });
@@ -94,30 +94,30 @@ export default function Blueprint() {
         .to('#annots', { opacity: 1, duration: 0.7, ease: 'power1.out' }, 1.9);
 
       /* pausa: il disegno tecnico completo resta leggibile */
-      tl.to({}, { duration: 1.0 }, 2.8);
+      tl.to({}, { duration: 0.4 }, 2.7);
 
       /* 03 - geometria, quote e cornice si ritirano */
-      tl.to('#scaffold', { opacity: 0, duration: 0.8, ease: 'power1.inOut' }, 3.6)
-        .to('#annots', { opacity: 0, duration: 0.9, ease: 'power1.inOut' }, 3.8)
-        .to('#sheet', { opacity: 0, duration: 0.9, ease: 'power1.inOut' }, 4.0);
+      tl.to('#scaffold', { opacity: 0, duration: 0.6, ease: 'power1.inOut' }, 3.1)
+        .to('#annots', { opacity: 0, duration: 0.6, ease: 'power1.inOut' }, 3.2)
+        .to('#sheet', { opacity: 0, duration: 0.6, ease: 'power1.inOut' }, 3.35);
 
       /* 04 - ogni pezzo prende materia, in sequenza 01 -> 10 */
       parts.forEach((p, i) => {
-        const at = 4.6 + i * 0.3;
+        const at = 3.9 + i * 0.22;
         tl.fromTo(
           p,
           { y: -DROP, scale: SCALE_FROM },
-          { y: 0, scale: 1, duration: 1.0, ease: 'power2.out', immediateRender: false },
+          { y: 0, scale: 1, duration: 0.8, ease: 'power2.out', immediateRender: false },
           at
         );
-        tl.to(p.querySelectorAll('.sol'), { opacity: 1, duration: 0.8, ease: 'power1.out' }, at);
+        tl.to(p.querySelectorAll('.sol'), { opacity: 1, duration: 0.6, ease: 'power1.out' }, at);
       });
 
       /* 05 - avvio */
-      tl.to(q('.led'), { opacity: 1, duration: 0.5, ease: 'power1.out' }, 7.6)
-        .to('#shadow', { opacity: 0.13, duration: 1.2, ease: 'power1.out' }, 7.9);
+      tl.to(q('.led'), { opacity: 1, duration: 0.5, ease: 'power1.out' }, 6.2)
+        .to('#shadow', { opacity: 0.13, duration: 1.0, ease: 'power1.out' }, 6.4);
 
-      tl.to({}, { duration: 1.4 }, 8.6);
+      tl.to({}, { duration: 1.6 }, 7.0);
     }, root);
 
     return () => ctx.revert();
@@ -189,7 +189,7 @@ export default function Blueprint() {
               <g><line className="ann" x1="853" y1="182" x2="774" y2="204" /><circle className="ann" cx="866" cy="180" r="13" fill="#ffffff" /><text className="balloon-t" x="866" y="180">07</text></g>
               <g><line className="ann" x1="640" y1="222" x2="620" y2="286" /><circle className="ann" cx="646" cy="212" r="13" fill="#ffffff" /><text className="balloon-t" x="646" y="212">08</text></g>
               <g><line className="ann" x1="787" y1="470" x2="732" y2="462" /><circle className="ann" cx="800" cy="472" r="13" fill="#ffffff" /><text className="balloon-t" x="800" y="472">09</text></g>
-              <g><line className="ann" x1="163" y1="380" x2="176" y2="380" /><circle className="ann" cx="150" cy="380" r="13" fill="#ffffff" /><text className="balloon-t" x="150" y="380">10</text></g>
+              <g><line className="ann" x1="123" y1="380" x2="136" y2="380" /><circle className="ann" cx="110" cy="380" r="13" fill="#ffffff" /><text className="balloon-t" x="110" y="380">10</text></g>
             </g>
 
             {/* GEOMETRIA DI COSTRUZIONE */}
@@ -222,7 +222,7 @@ export default function Blueprint() {
               {[
                 [300, 252], [700, 252], [300, 432], [700, 432], [430, 342],
                 [700, 250], [756, 206], [296, 566], [704, 566], [418, 150],
-                [602, 150], [176, 380], [302, 380], [642, 432], [732, 486],
+                [602, 150], [136, 380], [302, 380], [642, 432], [732, 486],
               ].map(([cx, cy]) => (
                 <circle key={cx + '-' + cy} className="node" cx={cx} cy={cy} r="2.6" />
               ))}
@@ -336,12 +336,26 @@ export default function Blueprint() {
 
               {/* 10 nastro */}
               <g className="part">
-                <g className="sol"><rect x="176" y="370" width="126" height="20" rx="10" fill="#cbc9c0" /></g>
+                <g className="sol"><rect x="136" y="370" width="166" height="20" rx="10" fill="#cbc9c0" /></g>
                 <g className="out">
-                  <rect x="176" y="370" width="126" height="20" rx="10" />
-                  <g transform="translate(192,380)"><g className="spin sp-c"><circle className="out" r="7" /><line className="out" x1="-7" y1="0" x2="7" y2="0" /></g></g>
+                  <rect x="136" y="370" width="166" height="20" rx="10" />
+                  <g transform="translate(152,380)"><g className="spin sp-c"><circle className="out" r="7" /><line className="out" x1="-7" y1="0" x2="7" y2="0" /></g></g>
                   <g transform="translate(286,380)"><g className="spin sp-c"><circle className="out" r="7" /><line className="out" x1="-7" y1="0" x2="7" y2="0" /></g></g>
                 </g>
+              </g>
+
+              {/* pezzo prodotto che esce sul nastro */}
+              <g id="output">
+                {[0, 1].map((k) => (
+                  <g className="outp" key={k}>
+                    <rect x="252" y="354" width="44" height="16" rx="2" fill="#c2c0b7" stroke="#171715" strokeWidth="1.2" vectorEffect="non-scaling-stroke" />
+                    <circle cx="259" cy="359.5" r="1.7" fill="#171715" />
+                    <circle cx="289" cy="359.5" r="1.7" fill="#171715" />
+                    <circle cx="259" cy="364.5" r="1.7" fill="#171715" />
+                    <circle cx="289" cy="364.5" r="1.7" fill="#171715" />
+                    <line x1="266" y1="362" x2="282" y2="362" stroke="#171715" strokeWidth="1" vectorEffect="non-scaling-stroke" />
+                  </g>
+                ))}
               </g>
             </g>
           </svg>
