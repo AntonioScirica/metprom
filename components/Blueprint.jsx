@@ -138,6 +138,7 @@ export default function Blueprint() {
           <span className="ttl">01 — Dal foglio tecnico alla macchina</span>
           <span className="rd">
             <span className="js-pct">0</span>% · <span className="js-lbl">Geometria</span>
+            <span className="js-hint" />
           </span>
         </div>
 

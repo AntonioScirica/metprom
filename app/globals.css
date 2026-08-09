@@ -183,3 +183,12 @@ footer{padding:70px 0 36px;border-top:1px solid var(--line);margin-top:104px}
 /* geometria di costruzione */
 .scf{fill:none;stroke:var(--ink3);stroke-width:.7;vector-effect:non-scaling-stroke}
 .node{fill:var(--accent)}
+
+@media(max-width:600px){
+  .hgroup .btn.ghost{display:none}
+  .brand{font-size:9.5px;letter-spacing:.12em}
+  header .wrap{height:54px}
+  .stage-bar{flex-direction:column;gap:6px;align-items:flex-start}
+  .stage-bar .rd{text-align:left}
+  .js-hint{text-align:left}
+}
