@@ -102,7 +102,7 @@ export default function Page() {
             <a href="#settori">Settori</a><a href="#lavori">Lavori</a><a href="#contatti">Contatti</a>
           </nav>
           <div className="hgroup">
-            <a className="btn ghost" href="#">Area clienti</a>
+            {/* Area clienti — nascosta temporaneamente */}
             <a className="btn" href="#contatti"><span className="dot" />Preventivo</a>
           </div>
         </div>
