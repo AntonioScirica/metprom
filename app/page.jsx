@@ -249,7 +249,7 @@ export default function Page() {
       </section>
 
       {/* CTA */}
-      <section className="sec" id="contatti">
+      <section className="sec sec-flush-b" id="contatti">
         <div className="wrap">
           <div className="cta rv">
             <span className="mono">08 — Contatti</span>

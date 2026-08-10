@@ -28,6 +28,7 @@ section{position:relative;z-index:2}
 .sec{padding:104px 0}
 .sec-tight-b{padding-bottom:40px}
 .sec-tight-t{padding-top:40px}
+.sec-flush-b{padding-bottom:0}
 .sec-head{display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid var(--line);padding:16px 0 64px}
 
 .btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;padding:13px 20px;border-radius:2px;border:1px solid var(--ink);background:var(--ink);color:var(--paper);transition:background .25s,color .25s,transform .25s,border-color .25s;cursor:pointer}
@@ -173,7 +174,7 @@ header nav a:hover{color:var(--ink)}
 .cta .btn:hover{background:var(--paper);border-color:var(--paper);color:var(--ink)}
 .cta-contacts{display:flex;flex-direction:column;gap:6px;font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--ink3)}
 
-footer{padding:70px 0 36px;border-top:1px solid var(--line);margin-top:104px}
+footer{padding:28px 0 36px;border-top:1px solid var(--line);margin-top:0}
 .foot{display:grid;grid-template-columns:2fr 1fr 1fr;gap:30px}
 @media(max-width:800px){.foot{grid-template-columns:1fr}}
 .foot nav{display:flex;flex-direction:column;gap:9px}
