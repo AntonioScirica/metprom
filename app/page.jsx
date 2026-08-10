@@ -151,18 +151,18 @@ export default function Page() {
       <Blueprint />
 
       {/* CLAIM */}
-      <section className="sec">
+      <section className="sec sec-tight-b">
         <div className="wrap">
           <div className="sec-head"><span className="mono">02 — Metodo</span><span className="mono">Fig. 01 → MPG-T2</span></div>
           <div className="rv" style={{ display: 'grid', gridTemplateColumns: '1.15fr 1fr', gap: 60, alignItems: 'start' }}>
             <h2 className="h2">Quello che esiste solo su carta, noi lo mettiamo in produzione.</h2>
-            <p className="lead">Un solo interlocutore dal disegno tecnico alla consegna: progettazione, costruzione in officina o procurement, collaudo e installazione. Il cliente parla con noi, non con cinque fornitori diversi.</p>
+            <p className="lead" style={{ marginLeft: 'auto', textAlign: 'right' }}>Un solo interlocutore dal disegno tecnico alla consegna: progettazione, costruzione in officina o procurement, collaudo e installazione. Il cliente parla con noi, non con cinque fornitori diversi.</p>
           </div>
         </div>
       </section>
 
       {/* SERVIZI */}
-      <section className="sec" id="servizi">
+      <section className="sec sec-tight-t" id="servizi">
         <div className="wrap">
           <div className="sec-head"><span className="mono">03 — Cosa facciamo</span><span className="mono">04 aree</span></div>
           <div className="svc">

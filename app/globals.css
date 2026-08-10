@@ -26,6 +26,8 @@ h1,h2,h3,h4{font-weight:600;letter-spacing:-.035em;line-height:1.02}
 .lead{font-size:clamp(15px,1.35vw,18px);color:var(--ink2);max-width:46ch;letter-spacing:-.01em}
 section{position:relative;z-index:2}
 .sec{padding:104px 0}
+.sec-tight-b{padding-bottom:40px}
+.sec-tight-t{padding-top:40px}
 .sec-head{display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid var(--line);padding:16px 0 64px}
 
 .btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;padding:13px 20px;border-radius:2px;border:1px solid var(--ink);background:var(--ink);color:var(--paper);transition:background .25s,color .25s,transform .25s,border-color .25s;cursor:pointer}
@@ -141,7 +143,7 @@ header nav a:hover{color:var(--ink)}
 
 .stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line)}
 @media(max-width:800px){.stats{grid-template-columns:repeat(2,1fr)}}
-.stat{padding:34px 20px 34px 0;border-right:1px solid var(--line)}
+.stat{padding:34px 20px;border-right:1px solid var(--line);text-align:center}
 .stat:last-child{border-right:0}
 .stat .n{font-size:clamp(38px,4.6vw,64px);font-weight:500;letter-spacing:-.05em;line-height:1}
 .stat .n em{font-style:normal;color:var(--accent)}
