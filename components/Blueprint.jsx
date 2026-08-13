@@ -16,7 +16,7 @@ const PHASES = [
 
 /* tempi (in secondi di timeline) in cui inizia ciascuna fase.
    La geometria di costruzione e' gia' in scena al fotogramma zero. */
-const MARKS = [0, 1.6, 3.1, 3.9, 7.0];
+const MARKS = [0, 1.6, 2.9, 3.5, 4.5];
 
 /* La materializzazione usa un movimento uniforme per tutti i pezzi:
    una discesa di pochi pixel con micro-scala. Nessun valore arbitrario,
@@ -62,7 +62,7 @@ export default function Blueprint() {
         scrollTrigger: {
           trigger: root.current,
           start: 'top top',
-          end: '+=420%',
+          end: '+=320%',
           pin: true,
           scrub: 0.7,
           anticipatePin: 1,
@@ -75,7 +75,7 @@ export default function Blueprint() {
             for (let k = MARKS.length - 1; k >= 0; k--) { if (t >= MARKS[k]) { i = k; break; } }
             if (lblEl) lblEl.textContent = PHASES[i];
             phaseEls.forEach((e, j) => e.classList.toggle('on', j === i));
-            machine.classList.toggle('run', t > 6.9);
+            machine.classList.toggle('run', t > 4.5);
           },
         },
       });
@@ -94,27 +94,27 @@ export default function Blueprint() {
         .to('#annots', { opacity: 1, duration: 0.7, ease: 'power1.out' }, 1.9);
 
       /* pausa: il disegno tecnico completo resta leggibile */
-      tl.to({}, { duration: 0.4 }, 2.7);
+      tl.to({}, { duration: 0.2 }, 2.7);
 
       /* 03 - geometria, quote e cornice si ritirano */
-      tl.to('#scaffold', { opacity: 0, duration: 0.6, ease: 'power1.inOut' }, 3.1)
-        .to('#annots', { opacity: 0, duration: 0.6, ease: 'power1.inOut' }, 3.2)
-        .to('#sheet', { opacity: 0, duration: 0.6, ease: 'power1.inOut' }, 3.35);
+      tl.to('#scaffold', { opacity: 0, duration: 0.35, ease: 'power1.inOut' }, 2.9)
+        .to('#annots', { opacity: 0, duration: 0.35, ease: 'power1.inOut' }, 2.98)
+        .to('#sheet', { opacity: 0, duration: 0.35, ease: 'power1.inOut' }, 3.08);
 
       /* 04 - la macchina prende materia in un unico step, tutti i pezzi insieme */
       tl.fromTo(
         parts,
         { y: -DROP, scale: SCALE_FROM },
         { y: 0, scale: 1, duration: 0.8, ease: 'power2.out', immediateRender: false },
-        3.9
+        3.5
       );
-      tl.to(q('.part .sol'), { opacity: 1, duration: 0.6, ease: 'power1.out' }, 3.9);
+      tl.to(q('.part .sol'), { opacity: 1, duration: 0.6, ease: 'power1.out' }, 3.5);
 
       /* 05 - avvio */
-      tl.to(q('.led'), { opacity: 1, duration: 0.5, ease: 'power1.out' }, 6.2)
-        .to('#shadow', { opacity: 0.13, duration: 1.0, ease: 'power1.out' }, 6.4);
+      tl.to(q('.led'), { opacity: 1, duration: 0.5, ease: 'power1.out' }, 4.5)
+        .to('#shadow', { opacity: 0.13, duration: 1.0, ease: 'power1.out' }, 4.7);
 
-      tl.to({}, { duration: 1.6 }, 7.0);
+      tl.to({}, { duration: 2.6 }, 5.3);
     }, root);
 
     return () => ctx.revert();
