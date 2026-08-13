@@ -7,11 +7,11 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 const PHASES = [
-  'Tracciato',
-  'Foglio tecnico',
-  'Quote rimosse',
-  'Prende corpo',
-  'Macchina pronta',
+  'Контур',
+  'Чертёж',
+  'Без размеров',
+  'Обретает форму',
+  'Машина готова',
 ];
 
 /* tempi (in secondi di timeline) in cui inizia ciascuna fase.
@@ -127,7 +127,7 @@ export default function Blueprint() {
     <section className="pin-wrap" id="metodo" ref={root}>
       <div className="pin-stage">
         <div className="stage-bar">
-          <span className="ttl">01 — Dal foglio tecnico alla macchina</span>
+          <span className="ttl">01 — От чертежа к машине</span>
           <span className="rd">
             <span className="js-pct">0</span>% · <span className="js-lbl">Tracciato</span>
             <span className="js-hint" />
@@ -146,14 +146,14 @@ export default function Blueprint() {
                 <line className="ann" x1="714" y1="608" x2="954" y2="608" />
                 <line className="ann" x1="834" y1="608" x2="834" y2="640" />
                 <text className="ann-t" x="724" y="567">MET PROM GROUP</text>
-                <text className="ann-t" x="724" y="598">MPG-T2 / GRUPPO PRINCIPALE</text>
-                <text className="ann-t" x="724" y="629">SCALA 1:10</text>
-                <text className="ann-t" x="844" y="629">REV. 01 · 1/1</text>
+                <text className="ann-t" x="724" y="598">MPG-T2 / ОСНОВНОЙ УЗЕЛ</text>
+                <text className="ann-t" x="724" y="629">МАСШТАБ 1:10</text>
+                <text className="ann-t" x="844" y="629">РЕД. 01 · 1/1</text>
               </g>
-              <text className="ann-t" x="62" y="66">TOLLERANZE GEN. ISO 2768-mK</text>
-              <text className="ann-t" x="62" y="82">MAT. S235JR / AISI 304</text>
-              <text className="ann-t" x="62" y="98">SALDATURE EN ISO 5817-C</text>
-              <text className="ann-t" x="62" y="114">FINITURA RA 3.2</text>
+              <text className="ann-t" x="62" y="66">ДОПУСКИ ISO 2768-mK</text>
+              <text className="ann-t" x="62" y="82">МАТ. S235JR / AISI 304</text>
+              <text className="ann-t" x="62" y="98">СВАРКА EN ISO 5817-C</text>
+              <text className="ann-t" x="62" y="114">ШЕРОХОВАТОСТЬ RA 3.2</text>
             </g>
 
             {/* QUOTE E ANNOTAZIONI */}
@@ -177,7 +177,7 @@ export default function Blueprint() {
               <line className="ann-a" x1="286" y1="214" x2="234" y2="214" />
               <text className="ann-at" x="234" y="206">Ø116 H7</text>
 
-              <text className="ann-t" x="820" y="120">SEZ. A–A</text>
+              <text className="ann-t" x="820" y="120">СЕЧ. A–A</text>
               <line className="ann-a" x1="800" y1="130" x2="860" y2="130" />
 
               <g><line className="ann" x1="163" y1="586" x2="296" y2="576" /><circle className="ann" cx="150" cy="586" r="13" fill="#ffffff" /><text className="balloon-t" x="150" y="586">01</text></g>
@@ -364,11 +364,11 @@ export default function Blueprint() {
         <div className="stage-foot">
           <div className="pbar"><i className="js-bar" /></div>
           <div className="phase-row">
-            <span className="phase on">01 Tracciato</span>
-            <span className="phase">02 Foglio tecnico</span>
-            <span className="phase">03 Quote rimosse</span>
-            <span className="phase">04 Prende corpo</span>
-            <span className="phase">05 Macchina pronta</span>
+            <span className="phase on">01 Контур</span>
+            <span className="phase">02 Чертёж</span>
+            <span className="phase">03 Без размеров</span>
+            <span className="phase">04 Обретает форму</span>
+            <span className="phase">05 Машина готова</span>
           </div>
         </div>
       </div>

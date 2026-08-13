@@ -75,6 +75,7 @@ header nav a:hover{color:var(--ink)}
 .hero-cta{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-start;justify-content:flex-end}
 @media(max-width:820px){.hero-cta{justify-content:flex-start}}
 .hero-media{height:min(58vh,500px)}
+video.hero-media{width:100%;object-fit:cover;border:1px solid var(--line);border-radius:3px;display:block}
 .line{display:block;overflow:hidden;padding-bottom:.1em;margin-bottom:-.1em}
 .line>span{display:block;transform:translateY(105%)}
 

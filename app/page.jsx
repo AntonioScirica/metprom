@@ -28,29 +28,29 @@ function Ph({ label, spec, className = '', src }) {
 }
 
 const SERVICES = [
-  { n: '01', t: 'Attrezzature su misura', d: 'Progettazione e costruzione di macchine dedicate per il settore agricolo e alimentare. Partiamo dalla tua esigenza, dal tuo disegno tecnico o da un campione fisico.', ph: 'macchina finita · 4:3' },
-  { n: '02', t: 'Ricambi & componenti', d: 'Ingranaggi, alberi, pignoni, rulli e componenti di ricambio per agricoltura, alimentare e industria pesante — anche per macchinari fuori produzione.', ph: 'ingranaggi · 4:3' },
-  { n: '03', t: 'Fusione & forgiatura', d: 'Fusione di metalli ferrosi e non ferrosi, forgiatura e produzione di forgiati per componenti strutturali e meccanici su specifica.', ph: 'fusione / colata · 4:3' },
-  { n: '04', t: 'Polimeri & gomma tecnica', d: 'Lavorazione di plastica, fluoroplastica, caprolon, tecnolite e gomma tecnica per componenti industriali soggetti a usura.', ph: 'pezzi in polimero · 4:3' },
+  { n: '01', t: 'Оборудование на заказ', d: 'Проектирование и изготовление специализированных машин для сельского хозяйства и пищевой промышленности. Отталкиваемся от вашей задачи, технического чертежа или физического образца.', ph: 'готовая машина · 4:3' },
+  { n: '02', t: 'Запчасти и комплектующие', d: 'Шестерни, валы, шкивы, ролики и запасные части для сельского хозяйства, пищевой и тяжёлой промышленности — в том числе для снятого с производства оборудования.', ph: 'шестерни · 4:3' },
+  { n: '03', t: 'Литьё и ковка', d: 'Литьё чёрных и цветных металлов, ковка и производство поковок для конструкционных и механических деталей по спецификации.', ph: 'литьё / отливка · 4:3' },
+  { n: '04', t: 'Полимеры и техническая резина', d: 'Обработка пластика, фторопласта, капролона, технолита и технической резины для промышленных деталей, подверженных износу.', ph: 'детали из полимера · 4:3' },
 ];
 
 const WORKS = [
-  ['Ingranaggio a vite', '/img/ingranaggio-vite.jpg'],
-  ['Alberi conici', '/img/alberi-conici.jpg'],
-  ['Serbatoio in pressione', '/img/serbatoio-pressione.jpg'],
-  ['Rulli gommati', '/img/rulli-gommati.jpg'],
-  ['Giranti', '/img/giranti.jpg'],
-  ['Disco dentato', '/img/disco-dentato.jpg'],
-  ['Macchina MPG-T2', null],
-  ['Componenti custom', null],
+  ['Червячная шестерня', '/img/ingranaggio-vite.jpg'],
+  ['Конические валы', '/img/alberi-conici.jpg'],
+  ['Ёмкость под давлением', '/img/serbatoio-pressione.jpg'],
+  ['Резиновые ролики', '/img/rulli-gommati.jpg'],
+  ['Крыльчатки', '/img/giranti.jpg'],
+  ['Зубчатый диск', '/img/disco-dentato.jpg'],
+  ['Машина MPG-T2', null],
+  ['Комплектующие на заказ', null],
 ];
 
 const STEPS = [
-  ['01', 'Richiesta', "Ci racconti l'esigenza: un'idea, un disegno o un pezzo rotto da sostituire."],
-  ['02', 'Progettazione', 'Documentazione tecnica su misura, nostra o basata sulla tua.'],
-  ['03', 'Produzione', 'Costruzione in officina oppure procurement da fornitori selezionati.'],
-  ['04', 'Collaudo', 'Controllo dimensionale e funzionale prima della spedizione.'],
-  ['05', 'Consegna', 'Installazione, messa in servizio e assistenza post-vendita.'],
+  ['01', 'Заявка', 'Расскажите нам о задаче: идея, чертёж или сломанная деталь, которую нужно заменить.'],
+  ['02', 'Проектирование', 'Техническая документация под заказ — наша или на основе вашей.'],
+  ['03', 'Производство', 'Изготовление в цехе или поставка от проверенных поставщиков.'],
+  ['04', 'Испытание', 'Контроль размеров и функциональности перед отправкой.'],
+  ['05', 'Доставка', 'Установка, ввод в эксплуатацию и послепродажное обслуживание.'],
 ];
 
 export default function Page() {
@@ -116,12 +116,12 @@ export default function Page() {
         <div className="wrap">
           <div className="brand"><span className="mk" />MET&nbsp;PROM&nbsp;GROUP</div>
           <nav>
-            <a href="#metodo">Metodo</a><a href="#servizi">Servizi</a>
-            <a href="#settori">Settori</a><a href="#lavori">Lavori</a><a href="#contatti">Contatti</a>
+            <a href="#metodo">Метод</a><a href="#servizi">Услуги</a>
+            <a href="#settori">Отрасли</a><a href="#lavori">Работы</a><a href="#contatti">Контакты</a>
           </nav>
           <div className="hgroup">
             {/* Area clienti — nascosta temporaneamente */}
-            <a className="btn" href="#contatti"><span className="dot" />Preventivo</a>
+            <a className="btn" href="#contatti"><span className="dot" />Смета</a>
           </div>
         </div>
       </header>
@@ -131,25 +131,25 @@ export default function Page() {
         <div className="wrap">
           <div className="hero-top">
             <h1 className="display">
-              <span className="line"><span>Dal foglio</span></span>
-              <span className="line"><span>tecnico alla</span></span>
-              <span className="line"><span>macchina.</span></span>
+              <span className="line"><span>От чертежа</span></span>
+              <span className="line"><span>к готовой</span></span>
+              <span className="line"><span>машине.</span></span>
             </h1>
             <div className="hero-meta">
-              <span className="mono">Donetsk · Est. —</span>
-              <span className="mono">Progettazione · Produzione</span>
-              <span className="mono mono-a">Agricoltura / Alimentare / Pesante</span>
+              <span className="mono">Донецк · Осн. —</span>
+              <span className="mono">Проектирование · Производство</span>
+              <span className="mono mono-a">Сельское хоз-во / Пищевая пром. / Тяжёлая пром.</span>
             </div>
           </div>
           <div className="hero-sub">
-            <p className="lead">Ci porti un disegno, un campione o solo un'esigenza. Noi progettiamo, costruiamo e consegniamo la macchina. Quello che non produciamo, lo procuriamo.</p>
+            <p className="lead">Принесите чертёж, образец или просто опишите задачу. Мы спроектируем, изготовим и поставим машину. То, что не производим сами — закупим у проверенных поставщиков.</p>
             <div className="hero-cta">
-              <a className="btn" href="#contatti"><span className="dot" />Richiedi un preventivo</a>
-              <a className="btn ghost" href="#metodo">Come lavoriamo</a>
+              <a className="btn" href="#contatti"><span className="dot" />Запросить смету</a>
+              <a className="btn ghost" href="#metodo">Как мы работаем</a>
             </div>
           </div>
           <div className="rv">
-            <Ph className="hero-media" label="Video — hero" spec="16:9 · officina in lavorazione · loop muto · 1920×1080" />
+            <video className="hero-media" src="/video/hero-loop.mp4" autoPlay loop muted playsInline />
           </div>
         </div>
       </section>
@@ -158,8 +158,8 @@ export default function Page() {
         <div className="tick-track">
           {[0, 1].map((k) => (
             <span key={k} style={{ display: 'flex', gap: 44 }}>
-              <span>Attrezzature su misura</span><span>Ricambi &amp; componenti</span>
-              <span>Fusione &amp; forgiatura</span><span>Polimeri &amp; gomma tecnica</span>
+              <span>Оборудование на заказ</span><span>Запчасти и комплектующие</span>
+              <span>Литьё и ковка</span><span>Полимеры и техническая резина</span>
             </span>
           ))}
         </div>
@@ -171,10 +171,10 @@ export default function Page() {
       {/* CLAIM */}
       <section className="sec sec-tight-b">
         <div className="wrap">
-          <div className="sec-head"><span className="mono">02 — Metodo</span><span className="mono">Fig. 01 → MPG-T2</span></div>
+          <div className="sec-head"><span className="mono">02 — Метод</span><span className="mono">Рис. 01 → MPG-T2</span></div>
           <div className="rv" style={{ display: 'grid', gridTemplateColumns: '1.15fr 1fr', gap: 60, alignItems: 'start' }}>
-            <h2 className="h2">Quello che esiste solo su carta, noi lo mettiamo in produzione.</h2>
-            <p className="lead" style={{ marginLeft: 'auto', textAlign: 'right' }}>Un solo interlocutore dal disegno tecnico alla consegna: progettazione, costruzione in officina o procurement, collaudo e installazione. Il cliente parla con noi, non con cinque fornitori diversi.</p>
+            <h2 className="h2">То, что существует только на бумаге, мы запускаем в производство.</h2>
+            <p className="lead" style={{ marginLeft: 'auto', textAlign: 'right' }}>Один партнёр от чертежа до поставки: проектирование, изготовление в цехе или закупка, испытания и монтаж. Клиент общается с нами, а не с пятью разными поставщиками.</p>
           </div>
         </div>
       </section>
@@ -182,7 +182,7 @@ export default function Page() {
       {/* SERVIZI */}
       <section className="sec sec-tight-t" id="servizi">
         <div className="wrap">
-          <div className="sec-head"><span className="mono">03 — Cosa facciamo</span><span className="mono">04 aree</span></div>
+          <div className="sec-head"><span className="mono">03 — Что мы делаем</span><span className="mono">04 направления</span></div>
           <div className="svc">
             {SERVICES.map((s, i) => (
               <div key={s.n} className={`svc-row${open === i ? ' open' : ''}`} onClick={() => setOpen(open === i ? -1 : i)}>
@@ -203,12 +203,12 @@ export default function Page() {
       {/* SETTORI */}
       <section className="sec" id="settori">
         <div className="wrap">
-          <div className="sec-head"><span className="mono">04 — Settori</span><span className="mono">03 industrie</span></div>
+          <div className="sec-head"><span className="mono">04 — Отрасли</span><span className="mono">03 отрасли</span></div>
           <div className="sect-grid stg">
             {[
-              ['Agricoltura & zootecnia', 'Foto — agricoltura', '3:4 · impianto zootecnico', '01', '/img/settore-agricoltura.jpg'],
-              ['Industria alimentare', 'Foto — alimentare', '3:4 · linea di lavorazione', '02', '/img/settore-alimentare.jpg'],
-              ['Industria pesante', 'Foto — pesante', '3:4 · impianto industriale', '03', '/img/settore-pesante.jpg'],
+              ['Сельское хозяйство и животноводство', 'Фото — сельское хозяйство', '3:4 · животноводческий комплекс', '01', '/img/settore-agricoltura.jpg'],
+              ['Пищевая промышленность', 'Фото — пищевая пром.', '3:4 · производственная линия', '02', '/img/settore-alimentare.jpg'],
+              ['Тяжёлая промышленность', 'Фото — тяжёлая пром.', '3:4 · промышленный объект', '03', '/img/settore-pesante.jpg'],
             ].map(([t, l, s, n, src]) => (
               <div className="sect-card" key={n}>
                 <Ph label={l} spec={s} src={src} />
@@ -222,9 +222,9 @@ export default function Page() {
       {/* NUMERI */}
       <section className="sec">
         <div className="wrap">
-          <div className="sec-head"><span className="mono">05 — Numeri</span><span className="mono mono-a">dati da confermare</span></div>
+          <div className="sec-head"><span className="mono">05 — Цифры</span><span className="mono mono-a">данные уточняются</span></div>
           <div className="stats stg">
-            {[[30, '+', 'Anni di attività'], [500, '+', 'Pezzi realizzati'], [3, '', 'Settori serviti'], [100, '%', 'Su misura']].map(([v, suf, lab]) => (
+            {[[30, '+', 'Лет работы'], [500, '+', 'Изготовленных деталей'], [3, '', 'Обслуживаемых отраслей'], [100, '%', 'Под заказ']].map(([v, suf, lab]) => (
               <div className="stat" key={lab}>
                 <div className="n"><span className="ct" data-t={v}>0</span>{suf && <em>{suf}</em>}</div>
                 <div className="l mono">{lab}</div>
@@ -237,11 +237,11 @@ export default function Page() {
       {/* LAVORI */}
       <section className="sec" id="lavori">
         <div className="wrap">
-          <div className="sec-head"><span className="mono">06 — I nostri lavori</span><span className="mono">08 / —</span></div>
+          <div className="sec-head"><span className="mono">06 — Наши работы</span><span className="mono">08 / —</span></div>
           <div className="pf stg">
             {WORKS.map(([w, src], i) => (
               <div className="item" key={w}>
-                <Ph label={`Foto ${String(i + 1).padStart(2, '0')}`} spec="1:1" src={src} />
+                <Ph label={`Фото ${String(i + 1).padStart(2, '0')}`} spec="1:1" src={src} />
                 <div className="cap"><span className="mono">{w}</span><span className="mono">{String(i + 1).padStart(2, '0')}</span></div>
               </div>
             ))}
@@ -252,7 +252,7 @@ export default function Page() {
       {/* PROCESSO */}
       <section className="sec" id="processo">
         <div className="wrap">
-          <div className="sec-head"><span className="mono">07 — Processo</span><span className="mono">05 fasi</span></div>
+          <div className="sec-head"><span className="mono">07 — Процесс</span><span className="mono">05 этапов</span></div>
           <div className="proc">
             {STEPS.map(([n, t, d]) => (
               <div className="step" key={n}>
@@ -270,14 +270,14 @@ export default function Page() {
       <section className="sec sec-flush-b" id="contatti">
         <div className="wrap">
           <div className="cta rv">
-            <span className="mono">08 — Contatti</span>
-            <h2 className="h2" style={{ marginTop: 22 }}>Hai un pezzo da rifare o una macchina da progettare?</h2>
+            <span className="mono">08 — Контакты</span>
+            <h2 className="h2" style={{ marginTop: 22 }}>Нужно изготовить деталь или спроектировать машину?</h2>
             <div className="cta-row">
-              <a className="btn" href="#"><span className="dot" />Richiedi un preventivo</a>
+              <a className="btn" href="#"><span className="dot" />Запросить смету</a>
               <div className="cta-contacts">
-                <span>T — +38 (071) 109-9-009</span>
-                <span>W — +38 (071) 309-9-009</span>
-                <span>E — info@metpromgroup.ru</span>
+                <span>Тел — +38 (071) 109-9-009</span>
+                <span>WhatsApp — +38 (071) 309-9-009</span>
+                <span>Email — info@metpromgroup.ru</span>
               </div>
             </div>
           </div>
@@ -289,12 +289,12 @@ export default function Page() {
           <div className="foot">
             <div>
               <div className="brand" style={{ marginBottom: 14 }}><span className="mk" />MET&nbsp;PROM&nbsp;GROUP</div>
-              <p className="mono" style={{ maxWidth: '30ch', lineHeight: 1.9 }}>Progettazione e produzione di macchine e componenti industriali su misura.</p>
+              <p className="mono" style={{ maxWidth: '30ch', lineHeight: 1.9 }}>Проектирование и производство машин и промышленных комплектующих на заказ.</p>
             </div>
-            <nav><span className="mono" style={{ marginBottom: 6 }}>Sito</span><a href="#metodo">Metodo</a><a href="#servizi">Servizi</a><a href="#settori">Settori</a><a href="#lavori">Lavori</a></nav>
-            <nav><span className="mono" style={{ marginBottom: 6 }}>Contatti</span><a href="#">Telefono</a><a href="#">WhatsApp</a><a href="#">Email</a><a href="#">Area clienti</a></nav>
+            <nav><span className="mono" style={{ marginBottom: 6 }}>Сайт</span><a href="#metodo">Метод</a><a href="#servizi">Услуги</a><a href="#settori">Отрасли</a><a href="#lavori">Работы</a></nav>
+            <nav><span className="mono" style={{ marginBottom: 6 }}>Контакты</span><a href="#">Телефон</a><a href="#">WhatsApp</a><a href="#">Email</a><a href="#">Личный кабинет</a></nav>
           </div>
-          <div className="foot-b"><span className="mono">© 2026 Met Prom Group</span><span className="mono">Privacy · Cookie</span></div>
+          <div className="foot-b"><span className="mono">© 2026 Met Prom Group</span><span className="mono">Конфиденциальность · Cookie</span></div>
         </div>
       </footer>
     </div>

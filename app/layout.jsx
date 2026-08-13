@@ -1,14 +1,14 @@
 import './globals.css';
 
 export const metadata = {
-  title: 'Met Prom Group — Macchine e componenti industriali su misura',
+  title: 'Met Prom Group — машины и промышленные комплектующие на заказ',
   description:
-    'Progettazione e produzione di attrezzature, ricambi e componenti industriali su misura per agricoltura, industria alimentare e industria pesante.',
+    'Проектирование и производство оборудования, запчастей и промышленных комплектующих на заказ для сельского хозяйства, пищевой и тяжёлой промышленности.',
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="it">
+    <html lang="ru">
       <body>{children}</body>
     </html>
   );
