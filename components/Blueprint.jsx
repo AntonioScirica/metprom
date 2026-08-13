@@ -101,17 +101,14 @@ export default function Blueprint() {
         .to('#annots', { opacity: 0, duration: 0.6, ease: 'power1.inOut' }, 3.2)
         .to('#sheet', { opacity: 0, duration: 0.6, ease: 'power1.inOut' }, 3.35);
 
-      /* 04 - ogni pezzo prende materia, in sequenza 01 -> 10 */
-      parts.forEach((p, i) => {
-        const at = 3.9 + i * 0.22;
-        tl.fromTo(
-          p,
-          { y: -DROP, scale: SCALE_FROM },
-          { y: 0, scale: 1, duration: 0.8, ease: 'power2.out', immediateRender: false },
-          at
-        );
-        tl.to(p.querySelectorAll('.sol'), { opacity: 1, duration: 0.6, ease: 'power1.out' }, at);
-      });
+      /* 04 - la macchina prende materia in un unico step, tutti i pezzi insieme */
+      tl.fromTo(
+        parts,
+        { y: -DROP, scale: SCALE_FROM },
+        { y: 0, scale: 1, duration: 0.8, ease: 'power2.out', immediateRender: false },
+        3.9
+      );
+      tl.to(q('.part .sol'), { opacity: 1, duration: 0.6, ease: 'power1.out' }, 3.9);
 
       /* 05 - avvio */
       tl.to(q('.led'), { opacity: 1, duration: 0.5, ease: 'power1.out' }, 6.2)

@@ -206,8 +206,8 @@ footer{padding:28px 0 36px;border-top:1px solid var(--line);margin-top:0}
 
 /* pezzo prodotto in uscita sul nastro */
 .outp{opacity:0;transform-box:fill-box;transform-origin:center}
-.machine.run .outp{animation:outflow 3.6s linear infinite}
-.machine.run .outp:nth-child(2){animation-delay:1.8s}
+.machine.run .outp{animation:outflow 1.6s linear infinite}
+.machine.run .outp:nth-child(2){animation-delay:.8s}
 @keyframes outflow{
   0%{transform:translateX(0);opacity:0}
   9%{opacity:1}
