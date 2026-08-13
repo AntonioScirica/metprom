@@ -44,9 +44,13 @@ header .wrap{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;
 .brand{display:flex;align-items:center;gap:9px;font-family:var(--mono);font-size:11px;letter-spacing:.16em;font-weight:500;justify-self:start}
 .brand .mk{width:16px;height:16px;border:1.5px solid var(--ink);border-radius:2px;position:relative;flex:none}
 .brand .mk::after{content:"";position:absolute;inset:3.5px;background:var(--accent);border-radius:1px}
-header nav{display:flex;gap:26px;justify-self:center}
+header nav{display:flex;align-items:center;gap:26px;justify-self:center}
 header nav a{font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--ink2);transition:color .2s}
 header nav a:hover{color:var(--ink)}
+.nav-drop{position:relative;display:flex;align-items:center}
+.nav-drop-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%);padding-top:14px;display:none;flex-direction:column;gap:2px;min-width:170px}
+.nav-drop:hover .nav-drop-menu{display:flex}
+.nav-drop-menu a{background:var(--paper2);border:1px solid var(--line);padding:10px 14px;white-space:nowrap}
 .hgroup{display:flex;align-items:center;gap:14px;justify-self:end}
 @media(max-width:900px){header nav{display:none}}
 

@@ -1,9 +1,11 @@
 'use client';
 
-import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { useLayoutEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Blueprint from '../components/Blueprint';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -100,31 +102,11 @@ export default function Page() {
     return () => ctx.revert();
   }, []);
 
-  useEffect(() => {
-    const hd = document.getElementById('hd');
-    const onScroll = () => hd && hd.classList.toggle('on', window.scrollY > 40);
-    onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
-
   return (
     <div ref={scope}>
       <div className="grid-bg" />
 
-      <header id="hd">
-        <div className="wrap">
-          <div className="brand"><span className="mk" />MET&nbsp;PROM&nbsp;GROUP</div>
-          <nav>
-            <a href="#metodo">Метод</a><a href="#servizi">Услуги</a>
-            <a href="#settori">Отрасли</a><a href="#lavori">Работы</a><a href="#contatti">Контакты</a>
-          </nav>
-          <div className="hgroup">
-            {/* Area clienti — nascosta temporaneamente */}
-            <a className="btn" href="#contatti"><span className="dot" />Смета</a>
-          </div>
-        </div>
-      </header>
+      <Header />
 
       {/* HERO */}
       <section className="hero">
@@ -284,19 +266,7 @@ export default function Page() {
         </div>
       </section>
 
-      <footer>
-        <div className="wrap">
-          <div className="foot">
-            <div>
-              <div className="brand" style={{ marginBottom: 14 }}><span className="mk" />MET&nbsp;PROM&nbsp;GROUP</div>
-              <p className="mono" style={{ maxWidth: '30ch', lineHeight: 1.9 }}>Проектирование и производство машин и промышленных комплектующих на заказ.</p>
-            </div>
-            <nav><span className="mono" style={{ marginBottom: 6 }}>Сайт</span><a href="#metodo">Метод</a><a href="#servizi">Услуги</a><a href="#settori">Отрасли</a><a href="#lavori">Работы</a></nav>
-            <nav><span className="mono" style={{ marginBottom: 6 }}>Контакты</span><a href="#">Телефон</a><a href="#">WhatsApp</a><a href="#">Email</a><a href="#">Личный кабинет</a></nav>
-          </div>
-          <div className="foot-b"><span className="mono">© 2026 Met Prom Group</span><span className="mono">Конфиденциальность · Cookie</span></div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
