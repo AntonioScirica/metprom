@@ -53,6 +53,8 @@ header nav a:hover{color:var(--ink)}
 /* placeholders */
 .ph{position:relative;background:var(--paper2);border:1px solid var(--line);border-radius:3px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;overflow:hidden}
 .ph::before{content:"";position:absolute;inset:0;opacity:.5;background:linear-gradient(to top right,transparent calc(50% - .5px),var(--line) 50%,transparent calc(50% + .5px)),linear-gradient(to top left,transparent calc(50% - .5px),var(--line) 50%,transparent calc(50% + .5px))}
+.ph-img::before{display:none}
+.ph-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .ph .tick{position:absolute;width:9px;height:9px;border:1px solid var(--ink3)}
 .ph .t1{top:7px;left:7px;border-right:0;border-bottom:0}
 .ph .t2{top:7px;right:7px;border-left:0;border-bottom:0}

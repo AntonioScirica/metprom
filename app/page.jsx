@@ -7,7 +7,16 @@ import Blueprint from '../components/Blueprint';
 
 gsap.registerPlugin(ScrollTrigger);
 
-function Ph({ label, spec, className = '' }) {
+function Ph({ label, spec, className = '', src }) {
+  if (src) {
+    return (
+      <div className={`ph ph-img ${className}`}>
+        <img src={src} alt={label} />
+        <span className="tick t1" /><span className="tick t2" />
+        <span className="tick t3" /><span className="tick t4" />
+      </div>
+    );
+  }
   return (
     <div className={`ph ${className}`}>
       <span className="tick t1" /><span className="tick t2" />
@@ -25,7 +34,16 @@ const SERVICES = [
   { n: '04', t: 'Polimeri & gomma tecnica', d: 'Lavorazione di plastica, fluoroplastica, caprolon, tecnolite e gomma tecnica per componenti industriali soggetti a usura.', ph: 'pezzi in polimero · 4:3' },
 ];
 
-const WORKS = ['Ingranaggio a vite', 'Alberi conici', 'Serbatoio in pressione', 'Rulli gommati', 'Giranti', 'Disco dentato', 'Macchina MPG-T2', 'Componenti custom'];
+const WORKS = [
+  ['Ingranaggio a vite', '/img/ingranaggio-vite.jpg'],
+  ['Alberi conici', '/img/alberi-conici.jpg'],
+  ['Serbatoio in pressione', '/img/serbatoio-pressione.jpg'],
+  ['Rulli gommati', '/img/rulli-gommati.jpg'],
+  ['Giranti', '/img/giranti.jpg'],
+  ['Disco dentato', '/img/disco-dentato.jpg'],
+  ['Macchina MPG-T2', null],
+  ['Componenti custom', null],
+];
 
 const STEPS = [
   ['01', 'Richiesta', "Ci racconti l'esigenza: un'idea, un disegno o un pezzo rotto da sostituire."],
@@ -188,12 +206,12 @@ export default function Page() {
           <div className="sec-head"><span className="mono">04 — Settori</span><span className="mono">03 industrie</span></div>
           <div className="sect-grid stg">
             {[
-              ['Agricoltura & zootecnia', 'Foto — agricoltura', '3:4 · impianto zootecnico', '01'],
-              ['Industria alimentare', 'Foto — alimentare', '3:4 · linea di lavorazione', '02'],
-              ['Industria pesante', 'Foto — pesante', '3:4 · impianto industriale', '03'],
-            ].map(([t, l, s, n]) => (
+              ['Agricoltura & zootecnia', 'Foto — agricoltura', '3:4 · impianto zootecnico', '01', '/img/settore-agricoltura.jpg'],
+              ['Industria alimentare', 'Foto — alimentare', '3:4 · linea di lavorazione', '02', '/img/settore-alimentare.jpg'],
+              ['Industria pesante', 'Foto — pesante', '3:4 · impianto industriale', '03', '/img/settore-pesante.jpg'],
+            ].map(([t, l, s, n, src]) => (
               <div className="sect-card" key={n}>
-                <Ph label={l} spec={s} />
+                <Ph label={l} spec={s} src={src} />
                 <div className="cap"><h4>{t}</h4><span className="mono">{n}</span></div>
               </div>
             ))}
@@ -221,9 +239,9 @@ export default function Page() {
         <div className="wrap">
           <div className="sec-head"><span className="mono">06 — I nostri lavori</span><span className="mono">08 / —</span></div>
           <div className="pf stg">
-            {WORKS.map((w, i) => (
+            {WORKS.map(([w, src], i) => (
               <div className="item" key={w}>
-                <Ph label={`Foto ${String(i + 1).padStart(2, '0')}`} spec="1:1" />
+                <Ph label={`Foto ${String(i + 1).padStart(2, '0')}`} spec="1:1" src={src} />
                 <div className="cap"><span className="mono">{w}</span><span className="mono">{String(i + 1).padStart(2, '0')}</span></div>
               </div>
             ))}
