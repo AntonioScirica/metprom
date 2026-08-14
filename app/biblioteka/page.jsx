@@ -1,23 +1,8 @@
-import Header from '../../components/Header';
-import Footer from '../../components/Footer';
+import InfoPage, { getInfoPage } from '../../components/InfoPage';
 
 export const metadata = { title: 'Библиотека — Met Prom Group' };
 
-export default function Page() {
-  return (
-    <div>
-      <div className="grid-bg" />
-      <Header />
-
-      <section className="sec" style={{ paddingTop: 150 }}>
-        <div className="wrap">
-          <div className="sec-head"><span className="mono">01 — Информация</span><span className="mono">Библиотека</span></div>
-          <h1 className="h2">Библиотека</h1>
-          <p className="lead" style={{ marginTop: 22, maxWidth: '60ch' }}>Сертификаты, каталоги и чертежи для скачивания — материалы уточняются.</p>
-        </div>
-      </section>
-
-      <Footer />
-    </div>
-  );
+export default async function Page() {
+  const { page, nav, footer } = await getInfoPage('bibliotekaPage');
+  return <InfoPage page={page} nav={nav} footer={footer} fallbackTitle="Библиотека" />;
 }
