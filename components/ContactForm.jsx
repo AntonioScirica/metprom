@@ -1,9 +1,9 @@
 'use client';
 
 import { useState } from 'react';
-import { useLang } from '../lib/lang';
+import { useLang, pick } from '../lib/lang';
 
-const TXT = {
+const FALLBACK = {
   ru: {
     name: 'Имя', company: 'Компания', phone: 'Телефон', email: 'Email',
     message: 'Опишите задачу', messagePh: 'Идея, чертёж, деталь для замены — расскажите подробнее',
@@ -22,9 +22,25 @@ const TXT = {
   },
 };
 
-export default function ContactForm() {
+export default function ContactForm({ settings }) {
   const [lang] = useLang();
-  const t = TXT[lang] || TXT.ru;
+  const fb = FALLBACK[lang] || FALLBACK.ru;
+  const t = {
+    name: pick(settings?.nameLabel, lang) || fb.name,
+    company: pick(settings?.companyLabel, lang) || fb.company,
+    phone: pick(settings?.phoneLabel, lang) || fb.phone,
+    email: pick(settings?.emailLabel, lang) || fb.email,
+    message: pick(settings?.messageLabel, lang) || fb.message,
+    messagePh: pick(settings?.messagePlaceholder, lang) || fb.messagePh,
+    file: pick(settings?.fileLabel, lang) || fb.file,
+    choose: pick(settings?.chooseFileLabel, lang) || fb.choose,
+    noFile: pick(settings?.noFileLabel, lang) || fb.noFile,
+    submit: pick(settings?.submitLabel, lang) || fb.submit,
+    sending: pick(settings?.sendingLabel, lang) || fb.sending,
+    ok: pick(settings?.successMessage, lang) || fb.ok,
+    err: pick(settings?.errorMessage, lang) || fb.err,
+    required: pick(settings?.requiredMessage, lang) || fb.required,
+  };
   const [state, setState] = useState('idle');
   const [fileName, setFileName] = useState('');
 

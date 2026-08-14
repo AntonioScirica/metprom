@@ -71,7 +71,7 @@ const INFO_PAGES = [
 async function run() {
   console.log('Svuoto documenti gestiti esistenti...');
   await client.delete({
-    query: '*[_id in ["heroSection","tickerSection","animationSection","metodoSection","serviziSection","settoriSection","numeriSection","lavoriSection","processoSection","contattiSection","seoSettings","navbar","footer","others","oKompaniiPage","pokupatelyamPage","bibliotekaPage","vakansiiPage"]]',
+    query: '*[_id in ["heroSection","tickerSection","animationSection","metodoSection","serviziSection","settoriSection","numeriSection","lavoriSection","processoSection","contattiSection","seoSettings","navbar","footer","others","oKompaniiPage","pokupatelyamPage","bibliotekaPage","vakansiiPage","zayavkaSection","contactFormSettings"]]',
   });
 
   console.log('Preparo servizi...');
@@ -207,9 +207,40 @@ async function run() {
     _type: 'contattiSection',
     contattiEyebrow: L('08 — Контакты', '08 — Contacts'),
     ctaTitle: L('Нужно изготовить деталь или спроектировать машину?', 'Need a part made or a machine designed?'),
+    phoneLabel: L('Тел', 'Tel'),
     phone: '+38 (071) 109-9-009',
+    whatsappLabel: L('WhatsApp', 'WhatsApp'),
     whatsapp: '+38 (071) 309-9-009',
+    emailLabel: L('Email', 'Email'),
     email: 'info@rimmax.ru',
+  });
+
+  console.log('Creo Заявка (форма)...');
+  await client.createOrReplace({
+    _id: 'zayavkaSection',
+    _type: 'zayavkaSection',
+    pageTitle: L('Запросить смету', 'Request a quote'),
+    pageLead: L('Расскажите о задаче — идея, чертёж или деталь для замены. Ответим в ближайшее время.', 'Tell us about the task — an idea, a drawing, or a part to replace. We reply promptly.'),
+  });
+
+  console.log('Creo Форма заявки — тексты...');
+  await client.createOrReplace({
+    _id: 'contactFormSettings',
+    _type: 'contactFormSettings',
+    nameLabel: L('Имя', 'Name'),
+    companyLabel: L('Компания', 'Company'),
+    phoneLabel: L('Телефон', 'Phone'),
+    emailLabel: L('Email', 'Email'),
+    messageLabel: L('Опишите задачу', 'Describe the task'),
+    messagePlaceholder: L('Идея, чертёж, деталь для замены — расскажите подробнее', 'An idea, a drawing, a part to replace — tell us more'),
+    fileLabel: L('Прикрепить файл (чертёж, фото)', 'Attach a file (drawing, photo)'),
+    chooseFileLabel: L('Выбрать файл', 'Choose file'),
+    noFileLabel: L('Файл не выбран', 'No file chosen'),
+    submitLabel: L('Отправить заявку', 'Send request'),
+    sendingLabel: L('Отправка…', 'Sending…'),
+    successMessage: L('Заявка отправлена. Мы свяжемся с вами в ближайшее время.', "Request sent. We'll get back to you shortly."),
+    errorMessage: L('Не удалось отправить. Проверьте поля и попробуйте снова.', 'Could not send. Check the fields and try again.'),
+    requiredMessage: L('Укажите имя, сообщение и телефон или email.', 'Please provide name, message, and phone or email.'),
   });
 
   console.log('Creo SEO...');
@@ -253,8 +284,11 @@ async function run() {
     _id: 'footer',
     _type: 'footer',
     description: L('Проектирование и производство машин и промышленных комплектующих на заказ.', 'Design and manufacture of custom machines and industrial components.'),
+    siteColumnLabel: L('Сайт', 'Site'),
     siteLinks: NAV_LINKS,
+    infoColumnLabel: L('Информация', 'Information'),
     infoLinks: INFO_LINKS,
+    legalEntityLine: L('ООО «РИММАКС» · Донецк · ИНН 9302007954', 'RIMMAX LLC · Donetsk · Tax ID 9302007954'),
     copyright: '© 2026 РИММАКС',
     legalText: L('Конфиденциальность · Cookie', 'Privacy · Cookies'),
   });
@@ -264,6 +298,8 @@ async function run() {
     _id: 'others',
     _type: 'others',
     siteTitle: 'РИММАКС',
+    infoEyebrowLabel: L('01 — Информация', '01 — Information'),
+    logoSize: 85,
   });
 
   console.log('Fatto.');

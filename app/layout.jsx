@@ -1,6 +1,6 @@
 import { draftMode } from 'next/headers';
 import { VisualEditing } from 'next-sanity/visual-editing';
-import { SanityLive } from '../lib/sanity';
+import { SanityLive, sanityFetch } from '../lib/sanity';
 import './globals.css';
 
 export const metadata = {
@@ -10,10 +10,14 @@ export const metadata = {
 };
 
 export default async function RootLayout({ children }) {
-  const { isEnabled: isDraft } = await draftMode();
+  const [{ isEnabled: isDraft }, others] = await Promise.all([
+    draftMode(),
+    sanityFetch({ query: `*[_id == "others"][0]` }),
+  ]);
+  const logoSize = others.data?.logoSize || 85;
 
   return (
-    <html lang="ru">
+    <html lang="ru" style={{ '--logo-size': `${logoSize}px` }}>
       <body>
         {children}
         <SanityLive />

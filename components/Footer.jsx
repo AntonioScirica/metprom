@@ -24,19 +24,22 @@ export default function Footer({ footer }) {
   const infoLinks = footer?.infoLinks?.length ? footer.infoLinks : DEFAULT_INFO_LINKS;
   const copyright = footer?.copyright || '© 2026 РИММАКС';
   const legalText = pick(footer?.legalText, lang) || 'Конфиденциальность · Cookie';
+  const siteColumnLabel = pick(footer?.siteColumnLabel, lang) || 'Сайт';
+  const infoColumnLabel = pick(footer?.infoColumnLabel, lang) || 'Информация';
+  const legalEntityLine = pick(footer?.legalEntityLine, lang) || 'ООО «РИММАКС» · Донецк · ИНН 9302007954';
 
   return (
     <footer>
       <div className="wrap">
         <div className="foot">
           <div>
-            <div className="brand" style={{ marginBottom: 14 }}><span className="mk" />РИММАКС</div>
+            <a href="/" className="brand" style={{ marginBottom: 14 }}><span className="mk"><img src="/logo.svg" alt="РИММАКС" /></span></a>
             <p className="mono" style={{ maxWidth: '30ch', lineHeight: 1.9 }}>{description}</p>
           </div>
-          <nav><span className="mono" style={{ marginBottom: 6 }}>Сайт</span>{siteLinks.map((l) => <a key={l.href} href={l.href}>{pick(l.label, lang)}</a>)}</nav>
-          <nav><span className="mono" style={{ marginBottom: 6 }}>Информация</span>{infoLinks.map((l) => <a key={l.href} href={l.href}>{pick(l.label, lang)}</a>)}</nav>
+          <nav><span className="mono" style={{ marginBottom: 6 }}>{siteColumnLabel}</span>{siteLinks.map((l) => <a key={l.href} href={l.href}>{pick(l.label, lang)}</a>)}</nav>
+          <nav><span className="mono" style={{ marginBottom: 6 }}>{infoColumnLabel}</span>{infoLinks.map((l) => <a key={l.href} href={l.href}>{pick(l.label, lang)}</a>)}</nav>
         </div>
-        <div className="foot-legal mono">ООО «РИММАКС» · Донецк · ИНН 9302007954</div>
+        <div className="foot-legal mono">{legalEntityLine}</div>
         <div className="foot-b"><span className="mono">{copyright}</span><span className="mono">{legalText}</span></div>
       </div>
     </footer>

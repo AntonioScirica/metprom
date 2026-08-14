@@ -117,7 +117,7 @@ function HomeInner({ home, animation, nav, footer }) {
             <p className="lead">{t(h.heroLead, 'Принесите чертёж, образец или просто опишите задачу. Мы спроектируем, изготовим и поставим машину. То, что не производим сами — закупим у проверенных поставщиков.')}</p>
             <div className="hero-cta">
               <a className="btn" href="/zayavka"><span className="dot" />{t(h.ctaPrimaryLabel, 'Запросить смету')}</a>
-              <a className="btn ghost" href="#metodo">{t(h.ctaSecondaryLabel, 'Как мы работаем')}</a>
+              <a className="btn ghost" href="#processo">{t(h.ctaSecondaryLabel, 'Как мы работаем')}</a>
             </div>
           </div>
           <div className="rv">
@@ -161,7 +161,7 @@ function HomeInner({ home, animation, nav, footer }) {
                   <div className="svc-inner">
                     <span />
                     <p>{pick(s.description, lang)}</p>
-                    <Ph label="Фото" spec="" src={s.photoUrl} />
+                    <Ph label={lang === 'en' ? 'Photo' : 'Фото'} spec="" src={s.photoUrl} />
                   </div>
                 </div>
               </div>
@@ -215,7 +215,7 @@ function HomeInner({ home, animation, nav, footer }) {
           <div className="pf stg">
             {lavori.map((w, i) => (
               <div className="item" key={w._key}>
-                <Ph label={`Фото ${String(i + 1).padStart(2, '0')}`} spec="1:1" src={w.photoUrl} />
+                <Ph label={`${lang === 'en' ? 'Photo' : 'Фото'} ${String(i + 1).padStart(2, '0')}`} spec="1:1" src={w.photoUrl} />
                 <div className="cap"><span className="mono">{pick(w.title, lang)}</span><span className="mono">{String(i + 1).padStart(2, '0')}</span></div>
               </div>
             ))}
@@ -249,9 +249,9 @@ function HomeInner({ home, animation, nav, footer }) {
             <div className="cta-row">
               <a className="btn" href="/zayavka"><span className="dot" />{t(h.ctaPrimaryLabel, 'Запросить смету')}</a>
               <div className="cta-contacts">
-                <span>Тел — {h.phone || '+38 (071) 109-9-009'}</span>
-                <span>WhatsApp — {h.whatsapp || '+38 (071) 309-9-009'}</span>
-                <span>Email — {h.email || 'info@metpromgroup.ru'}</span>
+                <span>{t(h.phoneLabel, 'Тел')} — {h.phone || '+38 (071) 109-9-009'}</span>
+                <span>{t(h.whatsappLabel, 'WhatsApp')} — {h.whatsapp || '+38 (071) 309-9-009'}</span>
+                <span>{t(h.emailLabel, 'Email')} — {h.email || 'info@rimmax.ru'}</span>
               </div>
             </div>
           </div>

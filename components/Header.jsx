@@ -48,7 +48,7 @@ export default function Header({ nav }) {
   return (
     <header id="hd">
       <div className="wrap">
-        <div className="brand"><span className="mk" />РИММАКС</div>
+        <a href="/" className="brand"><span className="mk"><img src="/logo.svg" alt="РИММАКС" /></span></a>
         <nav>
           {before.map((l) => <a key={l.href} href={l.href}>{pick(l.label, lang)}</a>)}
           <div className="nav-drop">
