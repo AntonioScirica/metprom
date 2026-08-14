@@ -39,7 +39,7 @@ export async function POST(req) {
       message,
       attachment,
       createdAt: new Date().toISOString(),
-      status: 'новая',
+      status: 'new',
     });
 
     return NextResponse.json({ ok: true });
