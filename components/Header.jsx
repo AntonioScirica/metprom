@@ -39,7 +39,7 @@ export default function Header({ nav }) {
   const infoLinks = nav?.infoDropdownLinks?.length ? nav.infoDropdownLinks : DEFAULT_INFO_LINKS;
   const infoLabel = pick(nav?.infoDropdownLabel, lang) || 'Информация';
   const ctaLabel = pick(nav?.ctaLabel, lang) || 'Смета';
-  const ctaHref = nav?.ctaHref || '/#contatti';
+  const ctaHref = nav?.ctaHref || '/zayavka';
 
   const contattiIdx = links.findIndex((l) => l.href?.includes('contatti'));
   const before = contattiIdx >= 0 ? links.slice(0, contattiIdx) : links;

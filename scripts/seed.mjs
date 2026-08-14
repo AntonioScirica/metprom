@@ -245,7 +245,7 @@ async function run() {
     infoDropdownLabel: L('Информация', 'Information'),
     infoDropdownLinks: INFO_LINKS,
     ctaLabel: L('Смета', 'Quote'),
-    ctaHref: '/#contatti',
+    ctaHref: '/zayavka',
   });
 
   console.log('Creo Footer...');

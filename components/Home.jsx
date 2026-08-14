@@ -116,7 +116,7 @@ function HomeInner({ home, animation, nav, footer }) {
           <div className="hero-sub">
             <p className="lead">{t(h.heroLead, 'Принесите чертёж, образец или просто опишите задачу. Мы спроектируем, изготовим и поставим машину. То, что не производим сами — закупим у проверенных поставщиков.')}</p>
             <div className="hero-cta">
-              <a className="btn" href="#contatti"><span className="dot" />{t(h.ctaPrimaryLabel, 'Запросить смету')}</a>
+              <a className="btn" href="/zayavka"><span className="dot" />{t(h.ctaPrimaryLabel, 'Запросить смету')}</a>
               <a className="btn ghost" href="#metodo">{t(h.ctaSecondaryLabel, 'Как мы работаем')}</a>
             </div>
           </div>
@@ -247,7 +247,7 @@ function HomeInner({ home, animation, nav, footer }) {
             <span className="mono">{t(h.contattiEyebrow, '08 — Контакты')}</span>
             <h2 className="h2" style={{ marginTop: 22 }}>{t(h.ctaTitle, 'Нужно изготовить деталь или спроектировать машину?')}</h2>
             <div className="cta-row">
-              <a className="btn" href="#"><span className="dot" />{t(h.ctaPrimaryLabel, 'Запросить смету')}</a>
+              <a className="btn" href="/zayavka"><span className="dot" />{t(h.ctaPrimaryLabel, 'Запросить смету')}</a>
               <div className="cta-contacts">
                 <span>Тел — {h.phone || '+38 (071) 109-9-009'}</span>
                 <span>WhatsApp — {h.whatsapp || '+38 (071) 309-9-009'}</span>

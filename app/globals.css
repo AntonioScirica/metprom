@@ -27,6 +27,22 @@ h1,h2,h3,h4{font-weight:600;letter-spacing:-.035em;line-height:1.02}
 .claim-text{margin-left:auto;text-align:right}
 @media(max-width:820px){.claim-grid{grid-template-columns:1fr;gap:20px}.claim-text{margin-left:0;text-align:left}}
 .lead{font-size:clamp(15px,1.35vw,18px);color:var(--ink2);max-width:46ch;letter-spacing:-.01em}
+
+.contact-form{display:flex;flex-direction:column;gap:20px}
+.contact-form label{display:flex;flex-direction:column;gap:8px}
+.contact-form .mono{color:var(--ink3);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase}
+.contact-form input,.contact-form textarea{font-family:var(--sans);font-size:15px;padding:12px 14px;border:1px solid var(--line);border-radius:2px;background:var(--paper2);color:var(--ink);resize:vertical}
+.contact-form input:focus,.contact-form textarea:focus{outline:0;border-color:var(--accent)}
+.cf-row{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:600px){.cf-row{grid-template-columns:1fr}}
+.cf-file{gap:14px}
+.cf-file input{font-family:var(--sans);font-size:13px;color:var(--ink2);border:0;background:none;padding:0}
+.cf-file input::file-selector-button{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;padding:11px 18px;margin-right:14px;border-radius:2px;border:1px solid var(--ink);background:var(--ink);color:var(--paper);cursor:pointer;transition:background .25s,color .25s,border-color .25s}
+.cf-file input::file-selector-button:hover{background:var(--paper);color:var(--ink)}
+.contact-form .btn{align-self:flex-start;margin-top:8px}
+.contact-form .btn:disabled{opacity:.6;cursor:default}
+.cf-msg{font-family:var(--mono);font-size:12px}
+.cf-err{color:var(--accent)}
 section{position:relative;z-index:2}
 .sec{padding:104px 0}
 @media(max-width:820px){.sec{padding:56px 0}}
