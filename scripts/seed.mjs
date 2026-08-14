@@ -37,9 +37,9 @@ const SERVICES = [
 ];
 
 const SECTORS = [
-  { order: '01', title: L('Сельское хозяйство и животноводство', 'Agriculture & livestock'), file: 'settore-agricoltura.jpg' },
-  { order: '02', title: L('Пищевая промышленность', 'Food industry'), file: 'settore-alimentare.jpg' },
-  { order: '03', title: L('Тяжёлая промышленность', 'Heavy industry'), file: 'settore-pesante.jpg' },
+  { order: '01', title: L('Сельское хозяйство и животноводство', 'Agriculture & livestock'), file: 'settore-agricoltura.jpg', video: 'settore-agricoltura.mp4' },
+  { order: '02', title: L('Пищевая промышленность', 'Food industry'), file: 'settore-alimentare.jpg', video: 'settore-alimentare.mp4' },
+  { order: '03', title: L('Тяжёлая промышленность', 'Heavy industry'), file: 'settore-pesante.jpg', video: 'settore-pesante.mp4' },
 ];
 
 const WORKS = [
@@ -71,7 +71,7 @@ const INFO_PAGES = [
 async function run() {
   console.log('Svuoto documenti gestiti esistenti...');
   await client.delete({
-    query: '*[_id in ["heroSection","metodoSection","serviziSection","settoriSection","numeriSection","lavoriSection","processoSection","contattiSection","seoSettings","navbar","footer","others","oKompaniiPage","pokupatelyamPage","bibliotekaPage","vakansiiPage"]]',
+    query: '*[_id in ["heroSection","tickerSection","animationSection","metodoSection","serviziSection","settoriSection","numeriSection","lavoriSection","processoSection","contattiSection","seoSettings","navbar","footer","others","oKompaniiPage","pokupatelyamPage","bibliotekaPage","vakansiiPage"]]',
   });
 
   console.log('Preparo servizi...');
@@ -80,7 +80,7 @@ async function run() {
 
   console.log('Preparo settori...');
   const settori = [];
-  for (const s of SECTORS) settori.push({ _key: s.order, _type: 'sectorItem', order: s.order, title: s.title, photo: await uploadImage(s.file) });
+  for (const s of SECTORS) settori.push({ _key: s.order, _type: 'sectorItem', order: s.order, title: s.title, photo: await uploadImage(s.file), video: await uploadVideo(s.video) });
 
   console.log('Preparo lavori...');
   const lavori = [];
@@ -113,7 +113,41 @@ async function run() {
     heroVideo,
   });
 
-  console.log('Creo 01 — Metodo...');
+  console.log('Creo Ticker...');
+  await client.createOrReplace({
+    _id: 'tickerSection',
+    _type: 'tickerSection',
+    items: [
+      { _key: '01', _type: 'localeString', ...L('Оборудование на заказ', 'Custom equipment') },
+      { _key: '02', _type: 'localeString', ...L('Запчасти и комплектующие', 'Spare parts & components') },
+      { _key: '03', _type: 'localeString', ...L('Литьё и ковка', 'Casting & forging') },
+      { _key: '04', _type: 'localeString', ...L('Полимеры и техническая резина', 'Polymers & technical rubber') },
+    ],
+  });
+
+  console.log('Creo 01 — Animazione...');
+  await client.createOrReplace({
+    _id: 'animationSection',
+    _type: 'animationSection',
+    stageTitle: L('01 — От чертежа к машине', '01 — From drawing to machine'),
+    phases: [
+      { _key: '01', order: '01', label: L('Контур', 'Outline') },
+      { _key: '02', order: '02', label: L('Чертёж', 'Drawing') },
+      { _key: '03', order: '03', label: L('Без размеров', 'No dimensions') },
+      { _key: '04', order: '04', label: L('Обретает форму', 'Takes shape') },
+      { _key: '05', order: '05', label: L('Машина готова', 'Machine ready') },
+    ],
+    machineLabel: L('MPG-T2 / ОСНОВНОЙ УЗЕЛ', 'MPG-T2 / MAIN ASSEMBLY'),
+    scaleLabel: L('МАСШТАБ 1:10', 'SCALE 1:10'),
+    revLabel: L('РЕД. 01 · 1/1', 'REV. 01 · 1/1'),
+    tolerancesNote: L('ДОПУСКИ ISO 2768-mK', 'TOLERANCES ISO 2768-mK'),
+    materialNote: L('МАТ. S235JR / AISI 304', 'MAT. S235JR / AISI 304'),
+    weldingNote: L('СВАРКА EN ISO 5817-C', 'WELDING EN ISO 5817-C'),
+    finishNote: L('ШЕРОХОВАТОСТЬ RA 3.2', 'FINISH RA 3.2'),
+    sectionLabel: L('СЕЧ. A–A', 'SECT. A–A'),
+  });
+
+  console.log('Creo 02 — Metodo...');
   await client.createOrReplace({
     _id: 'metodoSection',
     _type: 'metodoSection',

@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useLang, pick } from '../lib/lang';
 
 const DEFAULT_LINKS = [
@@ -20,6 +20,7 @@ const DEFAULT_INFO_LINKS = [
 
 export default function Header({ nav }) {
   const [lang] = useLang();
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     const hd = document.getElementById('hd');
@@ -28,6 +29,11 @@ export default function Header({ nav }) {
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
+
+  useEffect(() => {
+    document.body.classList.toggle('nav-open', open);
+    return () => document.body.classList.remove('nav-open');
+  }, [open]);
 
   const links = nav?.links?.length ? nav.links : DEFAULT_LINKS;
   const infoLinks = nav?.infoDropdownLinks?.length ? nav.infoDropdownLinks : DEFAULT_INFO_LINKS;
@@ -55,7 +61,17 @@ export default function Header({ nav }) {
         </nav>
         <div className="hgroup">
           <a className="btn" href={ctaHref}><span className="dot" />{ctaLabel}</a>
+          <button className={`burger${open ? ' on' : ''}`} onClick={() => setOpen(!open)} aria-label="Menu">
+            <span /><span /><span />
+          </button>
         </div>
+      </div>
+
+      <div className="mnav">
+        {links.map((l) => <a key={l.href} href={l.href} onClick={() => setOpen(false)}>{pick(l.label, lang)}</a>)}
+        <span className="mnav-sep">{infoLabel}</span>
+        {infoLinks.map((l) => <a key={l.href} href={l.href} onClick={() => setOpen(false)}>{pick(l.label, lang)}</a>)}
+        <a className="btn mnav-cta" href={ctaHref} onClick={() => setOpen(false)}><span className="dot" />{ctaLabel}</a>
       </div>
     </header>
   );

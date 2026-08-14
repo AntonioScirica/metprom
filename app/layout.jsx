@@ -1,3 +1,6 @@
+import { draftMode } from 'next/headers';
+import { VisualEditing } from 'next-sanity/visual-editing';
+import { SanityLive } from '../lib/sanity';
 import './globals.css';
 
 export const metadata = {
@@ -6,10 +9,16 @@ export const metadata = {
     'Проектирование и производство оборудования, запчастей и промышленных комплектующих на заказ для сельского хозяйства, пищевой и тяжёлой промышленности.',
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+  const { isEnabled: isDraft } = await draftMode();
+
   return (
     <html lang="ru">
-      <body>{children}</body>
+      <body>
+        {children}
+        <SanityLive />
+        {isDraft && <VisualEditing />}
+      </body>
     </html>
   );
 }

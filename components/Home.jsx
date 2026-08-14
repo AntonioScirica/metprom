@@ -31,15 +31,15 @@ function Ph({ label, spec, className = '', src }) {
   );
 }
 
-export default function Home({ home, nav, footer }) {
+export default function Home({ home, animation, nav, footer }) {
   return (
     <LangProvider>
-      <HomeInner home={home} nav={nav} footer={footer} />
+      <HomeInner home={home} animation={animation} nav={nav} footer={footer} />
     </LangProvider>
   );
 }
 
-function HomeInner({ home, nav, footer }) {
+function HomeInner({ home, animation, nav, footer }) {
   const [lang] = useLang();
   const [open, setOpen] = useState(0);
   const scope = useRef(null);
@@ -106,8 +106,10 @@ function HomeInner({ home, nav, footer }) {
               <span className="line"><span>{t(h.heroTitleLine3, 'машине.')}</span></span>
             </h1>
             <div className="hero-meta">
-              <span className="mono">{t(h.heroLocation, 'Донецк · Осн. —')}</span>
-              <span className="mono">{t(h.heroTagline, 'Проектирование · Производство')}</span>
+              <span className="hero-meta-row">
+                <span className="mono">{t(h.heroLocation, 'Донецк · Осн. —')}</span>
+                <span className="mono">{t(h.heroTagline, 'Проектирование · Производство')}</span>
+              </span>
               <span className="mono mono-a">{t(h.heroTags, 'Сельское хоз-во / Пищевая пром. / Тяжёлая пром.')}</span>
             </div>
           </div>
@@ -127,22 +129,22 @@ function HomeInner({ home, nav, footer }) {
       <div className="ticker">
         <div className="tick-track">
           {(() => {
-            const items = servizi.length ? servizi : [{ title: 'Оборудование на заказ' }, { title: 'Запчасти и комплектующие' }, { title: 'Литьё и ковка' }, { title: 'Полимеры и техническая резина' }];
-            return [...items, ...items].map((s, i) => <span key={`${s._key || s.title}-${i}`}>{t(s.title, s.title)}</span>);
+            const items = h.tickerItems?.length ? h.tickerItems : (servizi.length ? servizi : [{ title: 'Оборудование на заказ' }, { title: 'Запчасти и комплектующие' }, { title: 'Литьё и ковка' }, { title: 'Полимеры и техническая резина' }]);
+            return [...items, ...items].map((s, i) => <span key={`${s._key || s.title}-${i}`}>{t(s.title || s, s.title || s)}</span>);
           })()}
         </div>
       </div>
 
       {/* SEZIONE PINNATA */}
-      <Blueprint />
+      <Blueprint data={animation} />
 
       {/* CLAIM */}
       <section className="sec sec-tight-b">
         <div className="wrap">
           <div className="sec-head"><span className="mono">{t(h.metodoEyebrow, '02 — Метод')}</span><span className="mono">{t(h.metodoFigure, 'Рис. 01 → MPG-T2')}</span></div>
-          <div className="rv" style={{ display: 'grid', gridTemplateColumns: '1.15fr 1fr', gap: 60, alignItems: 'start' }}>
+          <div className="rv claim-grid">
             <h2 className="h2">{t(h.claimTitle, 'То, что существует только на бумаге, мы запускаем в производство.')}</h2>
-            <p className="lead" style={{ marginLeft: 'auto', textAlign: 'right' }}>{t(h.claimText, 'Один партнёр от чертежа до поставки: проектирование, изготовление в цехе или закупка, испытания и монтаж. Клиент общается с нами, а не с пятью разными поставщиками.')}</p>
+            <p className="lead claim-text">{t(h.claimText, 'Один партнёр от чертежа до поставки: проектирование, изготовление в цехе или закупка, испытания и монтаж. Клиент общается с нами, а не с пятью разными поставщиками.')}</p>
           </div>
         </div>
       </section>
@@ -175,7 +177,15 @@ function HomeInner({ home, nav, footer }) {
           <div className="sect-grid stg">
             {settori.map((s) => (
               <div className="sect-card" key={s._key}>
-                <Ph label={pick(s.title, lang)} spec="" src={s.photoUrl} />
+                {s.videoUrl ? (
+                  <div className="ph ph-img">
+                    <video src={s.videoUrl} autoPlay loop muted playsInline />
+                    <span className="tick t1" /><span className="tick t2" />
+                    <span className="tick t3" /><span className="tick t4" />
+                  </div>
+                ) : (
+                  <Ph label={pick(s.title, lang)} spec="" src={s.photoUrl} />
+                )}
                 <div className="cap"><h4>{pick(s.title, lang)}</h4><span className="mono">{s.order}</span></div>
               </div>
             ))}
@@ -216,7 +226,7 @@ function HomeInner({ home, nav, footer }) {
       {/* PROCESSO */}
       <section className="sec" id="processo">
         <div className="wrap">
-          <div className="sec-head"><span className="mono">{t(h.processoEyebrow, '07 — Процесс')}</span><span className="mono">{String(processo.length).padStart(2, '0')} {t(h.processoCountLabel, 'этапов')}</span></div>
+          <div className="sec-head sec-head-flush-t sec-head-close"><span className="mono">{t(h.processoEyebrow, '07 — Процесс')}</span><span className="mono">{String(processo.length).padStart(2, '0')} {t(h.processoCountLabel, 'этапов')}</span></div>
           <div className="proc">
             {processo.map((st) => (
               <div className="step" key={st._key}>
@@ -232,8 +242,8 @@ function HomeInner({ home, nav, footer }) {
 
       {/* CTA */}
       <section className="sec sec-flush-b" id="contatti">
-        <div className="wrap">
-          <div className="cta rv">
+        <div className="cta rv">
+          <div className="wrap">
             <span className="mono">{t(h.contattiEyebrow, '08 — Контакты')}</span>
             <h2 className="h2" style={{ marginTop: 22 }}>{t(h.ctaTitle, 'Нужно изготовить деталь или спроектировать машину?')}</h2>
             <div className="cta-row">

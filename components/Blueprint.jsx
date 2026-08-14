@@ -3,15 +3,16 @@
 import { useLayoutEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useLang, pick } from '../lib/lang';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const PHASES = [
-  'Контур',
-  'Чертёж',
-  'Без размеров',
-  'Обретает форму',
-  'Машина готова',
+const DEFAULT_PHASES = [
+  { order: '01', label: 'Контур' },
+  { order: '02', label: 'Чертёж' },
+  { order: '03', label: 'Без размеров' },
+  { order: '04', label: 'Обретает форму' },
+  { order: '05', label: 'Машина готова' },
 ];
 
 /* tempi (in secondi di timeline) in cui inizia ciascuna fase.
@@ -24,8 +25,13 @@ const MARKS = [0, 1.6, 2.9, 3.5, 4.5];
 const DROP = 6;      // px di discesa
 const SCALE_FROM = 0.992;
 
-export default function Blueprint() {
+export default function Blueprint({ data }) {
   const root = useRef(null);
+  const [lang] = useLang();
+  const t = (field, fallback) => pick(field, lang) || fallback;
+
+  const phases = data?.phases?.length ? data.phases : DEFAULT_PHASES;
+  const phaseLabels = phases.map((p) => t(p.label, p.label));
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
@@ -73,7 +79,7 @@ export default function Blueprint() {
             if (barEl) barEl.style.width = p * 100 + '%';
             let i = 0;
             for (let k = MARKS.length - 1; k >= 0; k--) { if (t >= MARKS[k]) { i = k; break; } }
-            if (lblEl) lblEl.textContent = PHASES[i];
+            if (lblEl) lblEl.textContent = phaseLabels[i];
             phaseEls.forEach((e, j) => e.classList.toggle('on', j === i));
             machine.classList.toggle('run', t > 4.5);
           },
@@ -112,19 +118,19 @@ export default function Blueprint() {
 
       /* 05 - avvio */
       tl.to(q('.led'), { opacity: 1, duration: 0.5, ease: 'power1.out' }, 4.5)
-        .to('#shadow', { opacity: 0.13, duration: 1.0, ease: 'power1.out' }, 4.7);
+        .to('#shadow', { opacity: 0.28, duration: 1.0, ease: 'power1.out' }, 4.7);
 
-      tl.to({}, { duration: 2.6 }, 5.3);
+      tl.to({}, { duration: 1.0 }, 5.3);
     }, root);
 
     return () => ctx.revert();
-  }, []);
+  }, [lang]);
 
   return (
     <section className="pin-wrap" id="metodo" ref={root}>
       <div className="pin-stage">
         <div className="stage-bar">
-          <span className="ttl">01 — От чертежа к машине</span>
+          <span className="ttl">{t(data?.stageTitle, '01 — От чертежа к машине')}</span>
           <span className="rd">
             <span className="js-pct">0</span>% · <span className="js-lbl">Tracciato</span>
             <span className="js-hint" />
@@ -133,6 +139,11 @@ export default function Blueprint() {
 
         <div className="stage-svg">
           <svg viewBox="0 0 1000 680">
+            <defs>
+              <filter id="shadowBlur" x="-50%" y="-200%" width="200%" height="500%">
+                <feGaussianBlur stdDeviation="10" />
+              </filter>
+            </defs>
             {/* CORNICE + CARTIGLIO */}
             <g id="sheet">
               <rect className="sheet draw" x="30" y="24" width="940" height="632" pathLength="1" />
@@ -143,14 +154,14 @@ export default function Blueprint() {
                 <line className="ann" x1="714" y1="608" x2="954" y2="608" />
                 <line className="ann" x1="834" y1="608" x2="834" y2="640" />
                 <text className="ann-t" x="724" y="567">MET PROM GROUP</text>
-                <text className="ann-t" x="724" y="598">MPG-T2 / ОСНОВНОЙ УЗЕЛ</text>
-                <text className="ann-t" x="724" y="629">МАСШТАБ 1:10</text>
-                <text className="ann-t" x="844" y="629">РЕД. 01 · 1/1</text>
+                <text className="ann-t" x="724" y="598">{t(data?.machineLabel, 'MPG-T2 / ОСНОВНОЙ УЗЕЛ')}</text>
+                <text className="ann-t" x="724" y="629">{t(data?.scaleLabel, 'МАСШТАБ 1:10')}</text>
+                <text className="ann-t" x="844" y="629">{t(data?.revLabel, 'РЕД. 01 · 1/1')}</text>
               </g>
-              <text className="ann-t" x="62" y="66">ДОПУСКИ ISO 2768-mK</text>
-              <text className="ann-t" x="62" y="82">МАТ. S235JR / AISI 304</text>
-              <text className="ann-t" x="62" y="98">СВАРКА EN ISO 5817-C</text>
-              <text className="ann-t" x="62" y="114">ШЕРОХОВАТОСТЬ RA 3.2</text>
+              <text className="ann-t" x="62" y="66">{t(data?.tolerancesNote, 'ДОПУСКИ ISO 2768-mK')}</text>
+              <text className="ann-t" x="62" y="82">{t(data?.materialNote, 'МАТ. S235JR / AISI 304')}</text>
+              <text className="ann-t" x="62" y="98">{t(data?.weldingNote, 'СВАРКА EN ISO 5817-C')}</text>
+              <text className="ann-t" x="62" y="114">{t(data?.finishNote, 'ШЕРОХОВАТОСТЬ RA 3.2')}</text>
             </g>
 
             {/* QUOTE E ANNOTAZIONI */}
@@ -174,7 +185,7 @@ export default function Blueprint() {
               <line className="ann-a" x1="286" y1="214" x2="234" y2="214" />
               <text className="ann-at" x="234" y="206">Ø116 H7</text>
 
-              <text className="ann-t" x="820" y="120">СЕЧ. A–A</text>
+              <text className="ann-t" x="820" y="120">{t(data?.sectionLabel, 'СЕЧ. A–A')}</text>
               <line className="ann-a" x1="800" y1="130" x2="860" y2="130" />
 
               <g><line className="ann" x1="163" y1="586" x2="296" y2="576" /><circle className="ann" cx="150" cy="586" r="13" fill="#ffffff" /><text className="balloon-t" x="150" y="586">01</text></g>
@@ -227,7 +238,7 @@ export default function Blueprint() {
 
             {/* MACCHINA */}
             <g className="machine">
-              <ellipse id="shadow" cx="500" cy="600" rx="230" ry="12" fill="#171715" opacity="0" />
+              <ellipse id="shadow" cx="500" cy="602" rx="220" ry="14" fill="#171715" opacity="0" filter="url(#shadowBlur)" />
 
               {/* 01 telaio */}
               <g className="part">
@@ -361,11 +372,9 @@ export default function Blueprint() {
         <div className="stage-foot">
           <div className="pbar"><i className="js-bar" /></div>
           <div className="phase-row">
-            <span className="phase on">01 Контур</span>
-            <span className="phase">02 Чертёж</span>
-            <span className="phase">03 Без размеров</span>
-            <span className="phase">04 Обретает форму</span>
-            <span className="phase">05 Машина готова</span>
+            {phases.map((p, i) => (
+              <span key={p.order || i} className={`phase${i === 0 ? ' on' : ''}`}>{p.order} {phaseLabels[i]}</span>
+            ))}
           </div>
         </div>
       </div>
