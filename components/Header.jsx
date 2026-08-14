@@ -52,7 +52,7 @@ export default function Header({ nav }) {
         <nav>
           {before.map((l) => <a key={l.href} href={l.href}>{pick(l.label, lang)}</a>)}
           <div className="nav-drop">
-            <a href="#">{infoLabel}</a>
+            <span className="nav-drop-label">{infoLabel}<svg className="nav-drop-caret" width="8" height="5" viewBox="0 0 8 5" fill="none"><path d="M1 1l3 3 3-3" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" /></svg></span>
             <div className="nav-drop-menu">
               {infoLinks.map((l) => <a key={l.href} href={l.href}>{pick(l.label, lang)}</a>)}
             </div>
