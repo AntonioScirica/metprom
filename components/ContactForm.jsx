@@ -7,7 +7,7 @@ const TXT = {
   ru: {
     name: 'Имя', company: 'Компания', phone: 'Телефон', email: 'Email',
     message: 'Опишите задачу', messagePh: 'Идея, чертёж, деталь для замены — расскажите подробнее',
-    file: 'Прикрепить файл (чертёж, фото)', submit: 'Отправить заявку',
+    file: 'Прикрепить файл (чертёж, фото)', submit: 'Отправить заявку', choose: 'Выбрать файл', noFile: 'Файл не выбран',
     sending: 'Отправка…', ok: 'Заявка отправлена. Мы свяжемся с вами в ближайшее время.',
     err: 'Не удалось отправить. Проверьте поля и попробуйте снова.',
     required: 'Укажите имя, сообщение и телефон или email.',
@@ -15,7 +15,7 @@ const TXT = {
   en: {
     name: 'Name', company: 'Company', phone: 'Phone', email: 'Email',
     message: 'Describe the task', messagePh: 'An idea, a drawing, a part to replace — tell us more',
-    file: 'Attach a file (drawing, photo)', submit: 'Send request',
+    file: 'Attach a file (drawing, photo)', submit: 'Send request', choose: 'Choose file', noFile: 'No file chosen',
     sending: 'Sending…', ok: "Request sent. We'll get back to you shortly.",
     err: 'Could not send. Check the fields and try again.',
     required: 'Please provide name, message, and phone or email.',
@@ -26,6 +26,7 @@ export default function ContactForm() {
   const [lang] = useLang();
   const t = TXT[lang] || TXT.ru;
   const [state, setState] = useState('idle');
+  const [fileName, setFileName] = useState('');
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -74,10 +75,21 @@ export default function ContactForm() {
         <span className="mono">{t.message}</span>
         <textarea name="message" rows={5} placeholder={t.messagePh} required />
       </label>
-      <label className="cf-file">
+      <div className="cf-file">
         <span className="mono">{t.file}</span>
-        <input type="file" name="file" accept=".pdf,.jpg,.jpeg,.png,.dwg,.dxf,.step,.stp" />
-      </label>
+        <div className="cf-file-row">
+          <label className="cf-file-btn">
+            {t.choose}
+            <input
+              type="file"
+              name="file"
+              accept=".pdf,.jpg,.jpeg,.png,.dwg,.dxf,.step,.stp"
+              onChange={(e) => setFileName(e.target.files[0]?.name || '')}
+            />
+          </label>
+          <span className="cf-file-name">{fileName || t.noFile}</span>
+        </div>
+      </div>
 
       <button className="btn" type="submit" disabled={state === 'sending'}>
         <span className="dot" />{state === 'sending' ? t.sending : t.submit}
