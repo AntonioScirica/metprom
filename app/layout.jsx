@@ -1,6 +1,7 @@
 import { draftMode } from 'next/headers';
 import { VisualEditing } from 'next-sanity/visual-editing';
 import { SanityLive, sanityFetch } from '../lib/sanity';
+import CookieBanner from '../components/CookieBanner';
 import './globals.css';
 
 export const metadata = {
@@ -10,9 +11,10 @@ export const metadata = {
 };
 
 export default async function RootLayout({ children }) {
-  const [{ isEnabled: isDraft }, others] = await Promise.all([
+  const [{ isEnabled: isDraft }, others, cookieBanner] = await Promise.all([
     draftMode(),
     sanityFetch({ query: `*[_id == "others"][0]` }),
+    sanityFetch({ query: `*[_id == "cookieBanner"][0]` }),
   ]);
   const logoSize = others.data?.logoSize || 85;
 
@@ -20,6 +22,7 @@ export default async function RootLayout({ children }) {
     <html lang="ru" style={{ '--logo-size': `${logoSize}px` }}>
       <body>
         {children}
+        <CookieBanner data={cookieBanner.data} />
         <SanityLive />
         {isDraft && <VisualEditing />}
       </body>

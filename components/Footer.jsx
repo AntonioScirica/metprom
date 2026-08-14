@@ -23,7 +23,8 @@ export default function Footer({ footer }) {
   const siteLinks = footer?.siteLinks?.length ? footer.siteLinks : DEFAULT_SITE_LINKS;
   const infoLinks = footer?.infoLinks?.length ? footer.infoLinks : DEFAULT_INFO_LINKS;
   const copyright = footer?.copyright || '© 2026 РИММАКС';
-  const legalText = pick(footer?.legalText, lang) || 'Конфиденциальность · Cookie';
+  const privacyLabel = pick(footer?.privacyLabel, lang) || (lang === 'en' ? 'Privacy' : 'Конфиденциальность');
+  const cookieLabel = pick(footer?.cookieLabel, lang) || 'Cookie';
   const siteColumnLabel = pick(footer?.siteColumnLabel, lang) || 'Сайт';
   const infoColumnLabel = pick(footer?.infoColumnLabel, lang) || 'Информация';
   const legalEntityLine = pick(footer?.legalEntityLine, lang) || 'ООО «РИММАКС» · Донецк · ИНН 9302007954';
@@ -40,7 +41,7 @@ export default function Footer({ footer }) {
           <nav><span className="mono" style={{ marginBottom: 6 }}>{infoColumnLabel}</span>{infoLinks.map((l) => <a key={l.href} href={l.href}>{pick(l.label, lang)}</a>)}</nav>
         </div>
         <div className="foot-legal mono">{legalEntityLine}</div>
-        <div className="foot-b"><span className="mono">{copyright}</span><span className="mono">{legalText}</span></div>
+        <div className="foot-b"><span className="mono">{copyright}</span><span className="mono foot-legal-links"><a href="/privacy">{privacyLabel}</a> · <a href="/cookie">{cookieLabel}</a></span></div>
       </div>
     </footer>
   );

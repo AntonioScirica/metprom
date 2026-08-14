@@ -27,7 +27,7 @@ function Inner({ page, nav, footer, fallbackTitle, infoEyebrow }) {
         <div className="wrap">
           <div className="sec-head"><span className="mono">{eyebrow}</span><span className="mono">{title}</span></div>
           <h1 className="h2">{title}</h1>
-          <p className="lead" style={{ marginTop: 22, maxWidth: '60ch' }}>{pick(page?.text, lang)}</p>
+          <p className="lead" style={{ marginTop: 22, maxWidth: '70ch', whiteSpace: 'pre-line' }}>{pick(page?.text, lang)}</p>
         </div>
       </section>
 

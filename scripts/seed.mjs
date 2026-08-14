@@ -68,10 +68,42 @@ const INFO_PAGES = [
   { id: 'vakansiiPage', type: 'vakansiiPage', title: L('Вакансии', 'Careers'), text: L('Открытые позиции — материалы уточняются.', 'Open positions — details to be confirmed.') },
 ];
 
+const PRIVACY_TEXT_RU = `Оператор персональных данных — ООО «РИММАКС» (Донецк, ИНН 9302007954).
+
+Мы собираем данные, которые вы указываете в форме заявки на сайте: имя, название компании, телефон, email, текст сообщения и прикреплённый файл (чертёж, фото). Эти данные используются исключительно для обработки вашего запроса и связи с вами.
+
+Мы не передаём ваши данные третьим лицам, за исключением технических поставщиков, обеспечивающих работу сайта (хостинг, система управления контентом).
+
+Данные хранятся до тех пор, пока это необходимо для обработки заявки и деловой переписки, после чего удаляются по запросу.
+
+Вы можете в любой момент запросить доступ к своим данным, их исправление или удаление, написав нам на контактный email, указанный на сайте.`;
+
+const PRIVACY_TEXT_EN = `Data controller: RIMMAX LLC (Donetsk, Tax ID 9302007954).
+
+We collect the data you provide through the request form on this site: name, company, phone, email, message text and an attached file (drawing, photo). This data is used solely to process your request and to contact you back.
+
+We do not share your data with third parties, except for technical providers that keep the site running (hosting, content management system).
+
+Data is kept for as long as needed to handle your request and any related correspondence, and is deleted on request.
+
+You can request access to, correction of, or deletion of your data at any time by writing to the contact email listed on the site.`;
+
+const COOKIE_TEXT_RU = `Сайт использует минимальный набор технологий хранения данных в браузере (localStorage), необходимых для его работы: сохранение выбранного языка интерфейса и вашего решения по этому уведомлению о cookie.
+
+Мы не используем аналитические или рекламные cookie и не передаём данные о посещениях третьим лицам.
+
+Вы можете очистить эти данные в любой момент через настройки браузера — это не повлияет на доступность сайта, но язык и согласие на cookie будут запрошены заново.`;
+
+const COOKIE_TEXT_EN = `This site uses a minimal set of browser storage technologies (localStorage) required for it to work: remembering your chosen interface language and your response to this cookie notice.
+
+We do not use analytics or advertising cookies and do not share visit data with third parties.
+
+You can clear this data at any time via your browser settings — this won't affect site availability, but the language and cookie consent will be requested again.`;
+
 async function run() {
   console.log('Svuoto documenti gestiti esistenti...');
   await client.delete({
-    query: '*[_id in ["heroSection","tickerSection","animationSection","metodoSection","serviziSection","settoriSection","numeriSection","lavoriSection","processoSection","contattiSection","seoSettings","navbar","footer","others","oKompaniiPage","pokupatelyamPage","bibliotekaPage","vakansiiPage","zayavkaSection","contactFormSettings"]]',
+    query: '*[_id in ["heroSection","tickerSection","animationSection","metodoSection","serviziSection","settoriSection","numeriSection","lavoriSection","processoSection","contattiSection","seoSettings","navbar","footer","others","oKompaniiPage","pokupatelyamPage","bibliotekaPage","vakansiiPage","zayavkaSection","contactFormSettings","privacyPage","cookiePage","cookieBanner"]]',
   });
 
   console.log('Preparo servizi...');
@@ -255,6 +287,32 @@ async function run() {
     await client.createOrReplace({ _id: p.id, _type: p.type, title: p.title, text: p.text });
   }
 
+  console.log('Creo Privacy Policy...');
+  await client.createOrReplace({
+    _id: 'privacyPage',
+    _type: 'privacyPage',
+    title: L('Политика конфиденциальности', 'Privacy Policy'),
+    text: L(PRIVACY_TEXT_RU, PRIVACY_TEXT_EN),
+  });
+
+  console.log('Creo Cookie Policy...');
+  await client.createOrReplace({
+    _id: 'cookiePage',
+    _type: 'cookiePage',
+    title: L('Политика использования cookie', 'Cookie Policy'),
+    text: L(COOKIE_TEXT_RU, COOKIE_TEXT_EN),
+  });
+
+  console.log('Creo Cookie banner...');
+  await client.createOrReplace({
+    _id: 'cookieBanner',
+    _type: 'cookieBanner',
+    text: L('Мы используем только необходимые cookie для работы сайта. Подробнее — в политике использования cookie.', 'We use essential cookies to run this site. See our cookie policy for details.'),
+    acceptLabel: L('Принять', 'Accept'),
+    declineLabel: L('Отклонить', 'Decline'),
+    policyLinkLabel: L('Политика cookie', 'Cookie policy'),
+  });
+
   const NAV_LINKS = [
     { _key: 'metodo', _type: 'navLink', label: L('Метод', 'Method'), href: '/#metodo' },
     { _key: 'servizi', _type: 'navLink', label: L('Услуги', 'Services'), href: '/#servizi' },
@@ -290,7 +348,8 @@ async function run() {
     infoLinks: INFO_LINKS,
     legalEntityLine: L('ООО «РИММАКС» · Донецк · ИНН 9302007954', 'RIMMAX LLC · Donetsk · Tax ID 9302007954'),
     copyright: '© 2026 РИММАКС',
-    legalText: L('Конфиденциальность · Cookie', 'Privacy · Cookies'),
+    privacyLabel: L('Конфиденциальность', 'Privacy'),
+    cookieLabel: L('Cookie', 'Cookie'),
   });
 
   console.log('Creo Others...');
