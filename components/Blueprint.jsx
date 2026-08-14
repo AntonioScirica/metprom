@@ -153,7 +153,7 @@ export default function Blueprint({ data }) {
                 <line className="ann" x1="714" y1="576" x2="954" y2="576" />
                 <line className="ann" x1="714" y1="608" x2="954" y2="608" />
                 <line className="ann" x1="834" y1="608" x2="834" y2="640" />
-                <text className="ann-t" x="724" y="567">MET PROM GROUP</text>
+                <text className="ann-t" x="724" y="567">РИММАКС</text>
                 <text className="ann-t" x="724" y="598">{t(data?.machineLabel, 'MPG-T2 / ОСНОВНОЙ УЗЕЛ')}</text>
                 <text className="ann-t" x="724" y="629">{t(data?.scaleLabel, 'МАСШТАБ 1:10')}</text>
                 <text className="ann-t" x="844" y="629">{t(data?.revLabel, 'РЕД. 01 · 1/1')}</text>

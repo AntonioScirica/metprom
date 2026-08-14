@@ -1,6 +1,6 @@
 import InfoPage, { getInfoPage } from '../../components/InfoPage';
 
-export const metadata = { title: 'Библиотека — Met Prom Group' };
+export const metadata = { title: 'Библиотека — РИММАКС' };
 
 export default async function Page() {
   const { page, nav, footer } = await getInfoPage('bibliotekaPage');

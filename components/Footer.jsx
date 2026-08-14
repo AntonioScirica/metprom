@@ -22,7 +22,7 @@ export default function Footer({ footer }) {
   const description = pick(footer?.description, lang) || 'Проектирование и производство машин и промышленных комплектующих на заказ.';
   const siteLinks = footer?.siteLinks?.length ? footer.siteLinks : DEFAULT_SITE_LINKS;
   const infoLinks = footer?.infoLinks?.length ? footer.infoLinks : DEFAULT_INFO_LINKS;
-  const copyright = footer?.copyright || '© 2026 Met Prom Group';
+  const copyright = footer?.copyright || '© 2026 РИММАКС';
   const legalText = pick(footer?.legalText, lang) || 'Конфиденциальность · Cookie';
 
   return (
@@ -30,12 +30,13 @@ export default function Footer({ footer }) {
       <div className="wrap">
         <div className="foot">
           <div>
-            <div className="brand" style={{ marginBottom: 14 }}><span className="mk" />MET&nbsp;PROM&nbsp;GROUP</div>
+            <div className="brand" style={{ marginBottom: 14 }}><span className="mk" />РИММАКС</div>
             <p className="mono" style={{ maxWidth: '30ch', lineHeight: 1.9 }}>{description}</p>
           </div>
           <nav><span className="mono" style={{ marginBottom: 6 }}>Сайт</span>{siteLinks.map((l) => <a key={l.href} href={l.href}>{pick(l.label, lang)}</a>)}</nav>
           <nav><span className="mono" style={{ marginBottom: 6 }}>Информация</span>{infoLinks.map((l) => <a key={l.href} href={l.href}>{pick(l.label, lang)}</a>)}</nav>
         </div>
+        <div className="foot-legal mono">ООО «РИММАКС» · Донецк · ИНН 9302007954</div>
         <div className="foot-b"><span className="mono">{copyright}</span><span className="mono">{legalText}</span></div>
       </div>
     </footer>

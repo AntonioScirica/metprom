@@ -209,14 +209,14 @@ async function run() {
     ctaTitle: L('Нужно изготовить деталь или спроектировать машину?', 'Need a part made or a machine designed?'),
     phone: '+38 (071) 109-9-009',
     whatsapp: '+38 (071) 309-9-009',
-    email: 'info@metpromgroup.ru',
+    email: 'info@rimmax.ru',
   });
 
   console.log('Creo SEO...');
   await client.createOrReplace({
     _id: 'seoSettings',
     _type: 'seoSettings',
-    seo: { metaTitle: 'Met Prom Group — машины и промышленные комплектующие на заказ', metaDescription: 'Проектирование и производство оборудования, запчастей и промышленных комплектующих на заказ для сельского хозяйства, пищевой и тяжёлой промышленности.' },
+    seo: { metaTitle: 'РИММАКС — машины и промышленные комплектующие на заказ', metaDescription: 'Проектирование и производство оборудования, запчастей и промышленных комплектующих на заказ для сельского хозяйства, пищевой и тяжёлой промышленности.' },
   });
 
   console.log('Creo pagine info...');
@@ -255,7 +255,7 @@ async function run() {
     description: L('Проектирование и производство машин и промышленных комплектующих на заказ.', 'Design and manufacture of custom machines and industrial components.'),
     siteLinks: NAV_LINKS,
     infoLinks: INFO_LINKS,
-    copyright: '© 2026 Met Prom Group',
+    copyright: '© 2026 РИММАКС',
     legalText: L('Конфиденциальность · Cookie', 'Privacy · Cookies'),
   });
 
@@ -263,7 +263,7 @@ async function run() {
   await client.createOrReplace({
     _id: 'others',
     _type: 'others',
-    siteTitle: 'Met Prom Group',
+    siteTitle: 'РИММАКС',
   });
 
   console.log('Fatto.');
