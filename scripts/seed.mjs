@@ -27,7 +27,7 @@ async function uploadVideo(filename) {
   return { _type: 'file', asset: { _type: 'reference', _ref: asset._id } };
 }
 
-const L = (ru, en, it) => ({ ru, en, it });
+const L = (ru, en) => ({ ru, en });
 
 const SERVICES = [
   { order: '01', title: L('Оборудование на заказ', 'Custom equipment', 'Attrezzature su misura'), description: L('Проектирование и изготовление специализированных машин для сельского хозяйства и пищевой промышленности. Отталкиваемся от вашей задачи, технического чертежа или физического образца.', 'Design and manufacture of specialized machines for agriculture and the food industry. We start from your need, technical drawing or physical sample.', 'Progettazione e costruzione di macchine dedicate per il settore agricolo e alimentare. Partiamo dalla tua esigenza, dal tuo disegno tecnico o da un campione fisico.'), file: 'servizio-attrezzature.jpg' },
