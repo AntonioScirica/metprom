@@ -1,6 +1,7 @@
 :root{
   --paper:#f2f1ec; --paper2:#e9e8e2; --ink:#171715; --ink2:#75746c; --ink3:#a3a29a;
   --line:#d7d6cf; --accent:#ff4d00;
+  --gift-ribbon:#ff4d00; --gift-ribbon-dark:#c93c00; --gift-ribbon-light:#ff7433;
   --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
   --sans:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Helvetica,Arial,sans-serif;
 }
@@ -101,6 +102,33 @@ header nav a:hover{color:var(--ink)}
 }
 .lang-dot{position:fixed;right:22px;bottom:22px;z-index:80;width:44px;height:44px;border-radius:50%;background:var(--ink);color:var(--paper);border:0;cursor:pointer;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(0,0,0,.18);transition:transform .2s}
 .lang-dot:hover{transform:scale(1.08)}
+
+/* --- gift intro (temporanea) --- */
+.gift{position:fixed;inset:0;z-index:200;overflow:hidden}
+.gift-bg{position:absolute;inset:0;background:var(--paper);pointer-events:none;transition:opacity .5s .5s}
+.gift-ribbon-v{position:absolute;top:-5%;bottom:-5%;left:50%;width:88px;z-index:3;pointer-events:none;transform:translateX(-50%);background:var(--gift-ribbon);box-shadow:0 0 0 1px rgba(0,0,0,.1),12px 0 30px rgba(0,0,0,.14);transition:transform 1s cubic-bezier(.22,1,.36,1)}
+.gift-ribbon-h{position:absolute;left:-5%;right:-5%;top:50%;height:72px;z-index:3;pointer-events:none;transform:translateY(-50%);background:var(--gift-ribbon);box-shadow:0 0 0 1px rgba(0,0,0,.1),0 12px 30px rgba(0,0,0,.14);transition:transform 1s cubic-bezier(.22,1,.36,1)}
+.gift-bow{position:absolute;left:50%;top:50%;width:300px;z-index:4;pointer-events:none;transform:translate(-50%,-38%);filter:drop-shadow(0 12px 26px rgba(0,0,0,.24));transition:transform .5s ease,opacity .4s ease}
+.gift-hint{position:absolute;left:50%;top:50%;z-index:5;display:flex;flex-direction:column;align-items:flex-start;gap:4px;pointer-events:none;transform:translate(calc(-50% + 8px),calc(-50% + 30px)) rotate(-4deg);animation:gift-hint-bob 1.8s ease-in-out infinite}
+.gift-hint svg{width:60px;height:auto}
+.gift-hint span{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);margin-left:20px}
+@keyframes gift-hint-bob{0%,100%{transform:translate(calc(-50% + 8px),calc(-50% + 30px)) rotate(-4deg)}50%{transform:translate(calc(-50% + 8px),calc(-50% + 24px)) rotate(-4deg)}}
+.gift-card{position:fixed;left:50%;top:50%;z-index:2;border:1px solid var(--line);border-radius:2px;background:var(--paper2);cursor:pointer;padding:0;text-align:left;box-shadow:0 16px 36px rgba(0,0,0,.28);transform:translate(calc(-50% + 118px),calc(-50% + 92px)) rotate(-6deg);width:250px;height:150px;animation:gift-card-pulse 2.4s ease-in-out infinite;transition:transform .6s ease,width .6s ease,height .6s ease}
+@keyframes gift-card-pulse{0%,100%{box-shadow:0 16px 36px rgba(0,0,0,.28)}50%{box-shadow:0 16px 36px rgba(0,0,0,.28),0 0 0 6px rgba(255,77,0,.14)}}
+.gift-card-front{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink2);transition:opacity .3s}
+.gift-card-body{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;padding:44px 40px;opacity:0;pointer-events:none;transition:opacity .4s .4s}
+.gift-card-eyebrow{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3)}
+.gift-card-text{font-size:20px;line-height:1.6;color:var(--ink);text-align:center;max-width:34ch}
+.gift.card .gift-card{z-index:260;animation:none;transform:translate(-50%,-50%) rotate(0);width:min(520px,88vw);height:340px;cursor:default}
+.gift.card .gift-card-front{opacity:0}
+.gift.card .gift-card-body{opacity:1;pointer-events:auto}
+.gift.opening .gift-card{opacity:0;transform:translate(calc(-50% + 118px),calc(-50% + 60px)) scale(.92);transition:opacity .4s ease,transform .4s ease}
+.gift.opening .gift-bow{transform:translate(-50%,-38%) scale(.4);opacity:0;transition:transform .4s .4s ease,opacity .4s .4s ease}
+.gift.opening .gift-ribbon-v{transform:translateX(-50%) translateY(-110%);transition:transform .8s .8s cubic-bezier(.22,1,.36,1)}
+.gift.opening .gift-ribbon-h{transform:translateY(-50%) translateX(-110%);transition:transform .8s .8s cubic-bezier(.22,1,.36,1)}
+.gift.opening .gift-bg{opacity:0;transition:opacity .8s .8s ease}
+.gift.opening{pointer-events:none}
+@media(max-width:600px){.gift-card{transform:translate(calc(-50% + 76px),calc(-50% + 78px)) rotate(-6deg);width:200px;height:118px}.gift.card .gift-card{transform:translate(-50%,-50%) rotate(0)}}
 
 .cookie-banner{position:fixed;left:22px;bottom:22px;z-index:90;max-width:360px;padding:18px;border:1px solid var(--line);border-radius:2px;background:var(--paper2);box-shadow:0 12px 32px rgba(0,0,0,.16)}
 .cookie-banner p{font-size:11px;line-height:1.8;color:var(--ink2)}

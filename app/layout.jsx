@@ -2,6 +2,7 @@ import { draftMode } from 'next/headers';
 import { VisualEditing } from 'next-sanity/visual-editing';
 import { SanityLive, sanityFetch } from '../lib/sanity';
 import CookieBanner from '../components/CookieBanner';
+import GiftIntro from '../components/GiftIntro';
 import './globals.css';
 
 export const metadata = {
@@ -22,6 +23,7 @@ export default async function RootLayout({ children }) {
     <html lang="ru" style={{ '--logo-size': `${logoSize}px` }}>
       <body>
         {children}
+        <GiftIntro />
         <CookieBanner data={cookieBanner.data} />
         <SanityLive />
         {isDraft && <VisualEditing />}
