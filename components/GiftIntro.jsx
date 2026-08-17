@@ -43,8 +43,8 @@ function Inner() {
       {stage === 'wrapped' && (
         <div className="gift-hint">
           <svg viewBox="0 0 90 70" fill="none">
-            <path d="M4 4C6 30 22 52 50 58" stroke="var(--ink)" strokeWidth="2.4" strokeLinecap="round" fill="none" />
-            <path d="M38 63L50 58L44 46" stroke="var(--ink)" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+            <path d="M56 66C54 40 38 18 10 12" stroke="var(--ink)" strokeWidth="2.4" strokeLinecap="round" fill="none" />
+            <path d="M22 7L10 12L16 24" stroke="var(--ink)" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" fill="none" />
           </svg>
           <span className="mono">{lang === 'en' ? 'read me' : 'прочитай меня'}</span>
         </div>
