@@ -1,11 +1,11 @@
 export default {
   name: 'statItem',
-  title: 'Number',
+  title: 'Показатель',
   type: 'object',
   fields: [
-    { name: 'value', title: 'Value', type: 'number' },
-    { name: 'suffix', title: 'Suffix (+ / %)', type: 'string' },
-    { name: 'label', title: 'Label', type: 'localeString' },
+    { name: 'value', title: 'Значение', type: 'number' },
+    { name: 'suffix', title: 'Суффикс (+ / %)', type: 'string' },
+    { name: 'label', title: 'Подпись', type: 'localeString' },
   ],
   preview: { select: { title: 'label.ru', subtitle: 'value' } },
 };

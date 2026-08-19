@@ -2,46 +2,46 @@ const singleton = (S, type, title) => S.listItem().title(title).id(type).child(S
 
 export const structure = (S) =>
   S.list()
-    .title('Content')
+    .title('Контент')
     .items([
       S.listItem()
-        .title('Home')
+        .title('Главная')
         .child(
           S.list()
-            .title('Home')
+            .title('Главная')
             .items([
-              singleton(S, 'heroSection', 'Slider (cover)'),
-              singleton(S, 'tickerSection', 'Ticker (scrolling strip)'),
-              singleton(S, 'animationSection', '01 — Animation'),
-              singleton(S, 'metodoSection', '02 — Method'),
-              singleton(S, 'serviziSection', '03 — Services'),
-              singleton(S, 'settoriSection', '04 — Industries'),
-              singleton(S, 'numeriSection', '05 — Numbers'),
-              singleton(S, 'lavoriSection', '06 — Our Work'),
-              singleton(S, 'processoSection', '07 — Process'),
-              singleton(S, 'contattiSection', '08 — Contacts'),
+              singleton(S, 'heroSection', 'Слайдер (обложка)'),
+              singleton(S, 'tickerSection', 'Бегущая строка'),
+              singleton(S, 'animationSection', '01 — Анимация'),
+              singleton(S, 'metodoSection', '02 — Метод'),
+              singleton(S, 'serviziSection', '03 — Услуги'),
+              singleton(S, 'settoriSection', '04 — Отрасли'),
+              singleton(S, 'numeriSection', '05 — Цифры'),
+              singleton(S, 'lavoriSection', '06 — Наши работы'),
+              singleton(S, 'processoSection', '07 — Процесс'),
+              singleton(S, 'contattiSection', '08 — Контакты'),
               singleton(S, 'seoSettings', 'SEO'),
             ])
         ),
       S.listItem()
-        .title('Pages')
+        .title('Страницы')
         .child(
           S.list()
-            .title('Pages')
+            .title('Страницы')
             .items([
-              singleton(S, 'oKompaniiPage', 'About us'),
-              singleton(S, 'pokupatelyamPage', 'For customers'),
-              singleton(S, 'bibliotekaPage', 'Library'),
-              singleton(S, 'vakansiiPage', 'Careers'),
-              singleton(S, 'zayavkaSection', 'Request (form)'),
-              singleton(S, 'privacyPage', 'Privacy Policy'),
-              singleton(S, 'cookiePage', 'Cookie Policy'),
+              singleton(S, 'oKompaniiPage', 'О компании'),
+              singleton(S, 'pokupatelyamPage', 'Покупателям'),
+              singleton(S, 'bibliotekaPage', 'Библиотека'),
+              singleton(S, 'vakansiiPage', 'Вакансии'),
+              singleton(S, 'zayavkaSection', 'Заявка (форма)'),
+              singleton(S, 'privacyPage', 'Политика конфиденциальности'),
+              singleton(S, 'cookiePage', 'Политика cookie'),
             ])
         ),
-      singleton(S, 'contactFormSettings', 'Contact form — texts'),
-      singleton(S, 'cookieBanner', 'Cookie banner'),
+      singleton(S, 'contactFormSettings', 'Форма обратной связи — тексты'),
+      singleton(S, 'cookieBanner', 'Плашка cookie'),
       S.divider(),
-      singleton(S, 'navbar', 'Navbar'),
-      singleton(S, 'footer', 'Footer'),
-      singleton(S, 'others', 'Other'),
+      singleton(S, 'navbar', 'Навбар'),
+      singleton(S, 'footer', 'Подвал'),
+      singleton(S, 'others', 'Прочее'),
     ]);

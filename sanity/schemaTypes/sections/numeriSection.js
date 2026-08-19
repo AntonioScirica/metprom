@@ -1,11 +1,11 @@
 export default {
   name: 'numeriSection',
-  title: '05 — Numbers',
+  title: '05 — Цифры',
   type: 'document',
   fields: [
-    { name: 'numeriEyebrow', title: 'Section label', type: 'localeString' },
-    { name: 'numeriNote', title: 'Note (right side)', type: 'localeString' },
-    { name: 'numeri', title: 'Numbers', type: 'array', of: [{ type: 'statItem' }] },
+    { name: 'numeriEyebrow', title: 'Подпись раздела', type: 'localeString' },
+    { name: 'numeriNote', title: 'Примечание (справа)', type: 'localeString' },
+    { name: 'numeri', title: 'Цифры', type: 'array', of: [{ type: 'statItem' }] },
   ],
-  preview: { prepare: () => ({ title: '05 — Numbers' }) },
+  preview: { prepare: () => ({ title: '05 — Цифры' }) },
 };

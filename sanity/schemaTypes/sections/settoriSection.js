@@ -1,11 +1,11 @@
 export default {
   name: 'settoriSection',
-  title: '04 — Industries',
+  title: '04 — Отрасли',
   type: 'document',
   fields: [
-    { name: 'settoriEyebrow', title: 'Section label', type: 'localeString' },
-    { name: 'settoriCountLabel', title: 'Word after the number (e.g. "industries")', type: 'localeString' },
-    { name: 'settori', title: 'Industries', type: 'array', of: [{ type: 'sectorItem' }] },
+    { name: 'settoriEyebrow', title: 'Подпись раздела', type: 'localeString' },
+    { name: 'settoriCountLabel', title: 'Слово после числа (например, «отраслей»)', type: 'localeString' },
+    { name: 'settori', title: 'Отрасли', type: 'array', of: [{ type: 'sectorItem' }] },
   ],
-  preview: { prepare: () => ({ title: '04 — Industries' }) },
+  preview: { prepare: () => ({ title: '04 — Отрасли' }) },
 };

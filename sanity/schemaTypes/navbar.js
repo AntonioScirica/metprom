@@ -1,13 +1,13 @@
 export default {
   name: 'navbar',
-  title: 'Navbar',
+  title: 'Навбар',
   type: 'document',
   fields: [
-    { name: 'links', title: 'Menu items', type: 'array', of: [{ type: 'navLink' }] },
-    { name: 'infoDropdownLabel', title: 'Info dropdown label', type: 'localeString' },
-    { name: 'infoDropdownLinks', title: 'Info dropdown items', type: 'array', of: [{ type: 'navLink' }] },
-    { name: 'ctaLabel', title: 'CTA button text', type: 'localeString' },
-    { name: 'ctaHref', title: 'CTA button link', type: 'string' },
+    { name: 'links', title: 'Пункты меню', type: 'array', of: [{ type: 'navLink' }] },
+    { name: 'infoDropdownLabel', title: 'Подпись выпадающего меню «Инфо»', type: 'localeString' },
+    { name: 'infoDropdownLinks', title: 'Пункты выпадающего меню «Инфо»', type: 'array', of: [{ type: 'navLink' }] },
+    { name: 'ctaLabel', title: 'Текст CTA-кнопки', type: 'localeString' },
+    { name: 'ctaHref', title: 'Ссылка CTA-кнопки', type: 'string' },
   ],
-  preview: { prepare: () => ({ title: 'Navbar' }) },
+  preview: { prepare: () => ({ title: 'Навбар' }) },
 };

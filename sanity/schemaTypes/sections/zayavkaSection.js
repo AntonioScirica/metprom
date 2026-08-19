@@ -1,10 +1,10 @@
 export default {
   name: 'zayavkaSection',
-  title: 'Request (form page)',
+  title: 'Заявка (страница формы)',
   type: 'document',
   fields: [
-    { name: 'pageTitle', title: 'Title', type: 'localeString' },
-    { name: 'pageLead', title: 'Lead', type: 'localeText' },
+    { name: 'pageTitle', title: 'Заголовок', type: 'localeString' },
+    { name: 'pageLead', title: 'Лид', type: 'localeText' },
   ],
-  preview: { prepare: () => ({ title: 'Request (form page)' }) },
+  preview: { prepare: () => ({ title: 'Заявка (страница формы)' }) },
 };

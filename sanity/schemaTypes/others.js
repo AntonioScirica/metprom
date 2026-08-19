@@ -1,11 +1,11 @@
 export default {
   name: 'others',
-  title: 'Other',
+  title: 'Прочее',
   type: 'document',
   fields: [
-    { name: 'siteTitle', title: 'Site name', type: 'string' },
-    { name: 'infoEyebrowLabel', title: 'Info pages section label (e.g. "01 — Information")', type: 'localeString' },
-    { name: 'logoSize', title: 'Logo size in header/footer (px)', type: 'number', initialValue: 85 },
+    { name: 'siteTitle', title: 'Название сайта', type: 'string' },
+    { name: 'infoEyebrowLabel', title: 'Подпись раздела инфостраниц (например, «01 — Информация»)', type: 'localeString' },
+    { name: 'logoSize', title: 'Размер логотипа в шапке/подвале (px)', type: 'number', initialValue: 85 },
   ],
-  preview: { prepare: () => ({ title: 'Other' }) },
+  preview: { prepare: () => ({ title: 'Прочее' }) },
 };

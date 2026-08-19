@@ -1,10 +1,10 @@
 export default {
   name: 'lavoriSection',
-  title: '06 — Our Work',
+  title: '06 — Наши работы',
   type: 'document',
   fields: [
-    { name: 'lavoriEyebrow', title: 'Section label', type: 'localeString' },
-    { name: 'lavori', title: 'Works', type: 'array', of: [{ type: 'workItem' }] },
+    { name: 'lavoriEyebrow', title: 'Подпись раздела', type: 'localeString' },
+    { name: 'lavori', title: 'Работы', type: 'array', of: [{ type: 'workItem' }] },
   ],
-  preview: { prepare: () => ({ title: '06 — Our Work' }) },
+  preview: { prepare: () => ({ title: '06 — Наши работы' }) },
 };

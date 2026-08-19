@@ -1,15 +1,15 @@
 export default {
   name: 'cookiePage',
-  title: 'Cookie Policy',
+  title: 'Политика cookie',
   type: 'document',
   groups: [
-    { name: 'content', title: 'Content' },
+    { name: 'content', title: 'Контент' },
     { name: 'seo', title: 'SEO' },
   ],
   fields: [
-    { name: 'title', title: 'Title', type: 'localeString', group: 'content' },
-    { name: 'text', title: 'Text', type: 'localeText', group: 'content' },
+    { name: 'title', title: 'Заголовок', type: 'localeString', group: 'content' },
+    { name: 'text', title: 'Текст', type: 'localeText', group: 'content' },
     { name: 'seo', title: 'SEO', type: 'seo', group: 'seo' },
   ],
-  preview: { prepare: () => ({ title: 'Cookie Policy' }) },
+  preview: { prepare: () => ({ title: 'Политика cookie' }) },
 };

@@ -1,10 +1,10 @@
 export default {
   name: 'navLink',
-  title: 'Link',
+  title: 'Ссылка',
   type: 'object',
   fields: [
-    { name: 'label', title: 'Text', type: 'localeString' },
-    { name: 'href', title: 'Link (e.g. /#servizi or /page)', type: 'string' },
+    { name: 'label', title: 'Текст', type: 'localeString' },
+    { name: 'href', title: 'Ссылка (например, /#servizi или /page)', type: 'string' },
   ],
   preview: { select: { title: 'label.ru', subtitle: 'href' } },
 };

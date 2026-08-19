@@ -1,14 +1,14 @@
 export default {
   name: 'tickerSection',
-  title: 'Ticker (scrolling strip)',
+  title: 'Бегущая строка',
   type: 'document',
   fields: [
     {
       name: 'items',
-      title: 'Items',
+      title: 'Элементы',
       type: 'array',
       of: [{ type: 'localeString' }],
     },
   ],
-  preview: { prepare: () => ({ title: 'Ticker (scrolling strip)' }) },
+  preview: { prepare: () => ({ title: 'Бегущая строка' }) },
 };

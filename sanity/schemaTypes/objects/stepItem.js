@@ -1,11 +1,11 @@
 export default {
   name: 'stepItem',
-  title: 'Step',
+  title: 'Шаг',
   type: 'object',
   fields: [
-    { name: 'order', title: 'Number (01, 02...)', type: 'string' },
-    { name: 'title', title: 'Title', type: 'localeString' },
-    { name: 'text', title: 'Text', type: 'localeText' },
+    { name: 'order', title: 'Номер (01, 02...)', type: 'string' },
+    { name: 'title', title: 'Заголовок', type: 'localeString' },
+    { name: 'text', title: 'Текст', type: 'localeText' },
   ],
   preview: { select: { title: 'title.ru', subtitle: 'order' } },
 };

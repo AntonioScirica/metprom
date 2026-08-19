@@ -3,8 +3,8 @@ export default {
   title: 'SEO',
   type: 'object',
   fields: [
-    { name: 'metaTitle', title: 'Meta title', type: 'string' },
-    { name: 'metaDescription', title: 'Meta description', type: 'text', rows: 3 },
-    { name: 'ogImage', title: 'Immagine condivisione (OG)', type: 'image' },
+    { name: 'metaTitle', title: 'Meta-заголовок', type: 'string' },
+    { name: 'metaDescription', title: 'Meta-описание', type: 'text', rows: 3 },
+    { name: 'ogImage', title: 'Изображение для шеринга (OG)', type: 'image' },
   ],
 };

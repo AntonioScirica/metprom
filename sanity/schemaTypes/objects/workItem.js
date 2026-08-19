@@ -1,11 +1,11 @@
 export default {
   name: 'workItem',
-  title: 'Our work',
+  title: 'Наша работа',
   type: 'object',
   fields: [
-    { name: 'order', title: 'Order', type: 'number' },
-    { name: 'title', title: 'Title', type: 'localeString' },
-    { name: 'photo', title: 'Photo', type: 'image', options: { hotspot: true } },
+    { name: 'order', title: 'Порядок', type: 'number' },
+    { name: 'title', title: 'Заголовок', type: 'localeString' },
+    { name: 'photo', title: 'Фото', type: 'image', options: { hotspot: true } },
   ],
   preview: { select: { title: 'title.ru', media: 'photo' } },
 };

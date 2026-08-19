@@ -14,9 +14,9 @@ const HOME_TYPES = new Set([
 ]);
 
 const OTHER_ROUTES = {
-  zayavkaSection: {href: '/zayavka', title: 'Request form'},
-  contactFormSettings: {href: '/zayavka', title: 'Request form'},
-  cookieBanner: {href: '/', title: 'Cookie banner'},
+  zayavkaSection: {href: '/zayavka', title: 'Форма заявки'},
+  contactFormSettings: {href: '/zayavka', title: 'Форма заявки'},
+  cookieBanner: {href: '/', title: 'Плашка cookie'},
 };
 
 export const resolve = {
@@ -26,7 +26,7 @@ export const resolve = {
       return {locations: [{title: document.title?.ru || type, href: INFO_ROUTES[type]}]};
     }
     if (HOME_TYPES.has(type)) {
-      return {locations: [{title: 'Home', href: '/'}]};
+      return {locations: [{title: 'Главная', href: '/'}]};
     }
     if (OTHER_ROUTES[type]) {
       return {locations: [OTHER_ROUTES[type]]};
