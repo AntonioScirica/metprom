@@ -1,4 +1,4 @@
-import InfoPage, { getInfoPage } from '../../components/InfoPage';
+import InfoPage, { getInfoPage } from '../../../components/InfoPage';
 
 export const metadata = { title: 'Библиотека — РИММАКС' };
 

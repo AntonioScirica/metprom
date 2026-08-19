@@ -1,4 +1,4 @@
-import { sanityFetch } from '../../lib/sanity';
+import { sanityFetch } from '../../../lib/sanity';
 import ZayavkaClient from './ZayavkaClient';
 
 export const metadata = { title: 'Заявка на расчёт — РИММАКС' };

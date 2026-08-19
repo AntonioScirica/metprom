@@ -13,6 +13,8 @@
     "next": "^15.5.16",
     "next-sanity": "^11.5.0",
     "react": "^19.1.1",
-    "react-dom": "^19.1.1"
+    "react-dom": "^19.1.1",
+    "sanity": "^4.22.0",
+    "styled-components": "^6.5.3"
   }
 }

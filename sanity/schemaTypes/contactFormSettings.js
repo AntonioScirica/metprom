@@ -1,0 +1,22 @@
+export default {
+  name: 'contactFormSettings',
+  title: 'Contact form — texts',
+  type: 'document',
+  fields: [
+    { name: 'nameLabel', title: 'Field "Name"', type: 'localeString' },
+    { name: 'companyLabel', title: 'Field "Company"', type: 'localeString' },
+    { name: 'phoneLabel', title: 'Field "Phone"', type: 'localeString' },
+    { name: 'emailLabel', title: 'Field "Email"', type: 'localeString' },
+    { name: 'messageLabel', title: 'Field "Message"', type: 'localeString' },
+    { name: 'messagePlaceholder', title: 'Message field placeholder', type: 'localeString' },
+    { name: 'fileLabel', title: 'Label "Attach a file"', type: 'localeString' },
+    { name: 'chooseFileLabel', title: 'Button "Choose file"', type: 'localeString' },
+    { name: 'noFileLabel', title: 'Text "No file chosen"', type: 'localeString' },
+    { name: 'submitLabel', title: 'Submit button', type: 'localeString' },
+    { name: 'sendingLabel', title: 'Text while sending', type: 'localeString' },
+    { name: 'successMessage', title: 'Success message', type: 'localeText' },
+    { name: 'errorMessage', title: 'Error message', type: 'localeText' },
+    { name: 'requiredMessage', title: 'Missing-fields message', type: 'localeText' },
+  ],
+  preview: { prepare: () => ({ title: 'Contact form — texts' }) },
+};

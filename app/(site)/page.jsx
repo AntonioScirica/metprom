@@ -1,5 +1,5 @@
-import { sanityFetch, urlFor, fileUrlFor } from '../lib/sanity';
-import Home from '../components/Home';
+import { sanityFetch, urlFor, fileUrlFor } from '../../lib/sanity';
+import Home from '../../components/Home';
 
 async function getData() {
   const [hero, animation, ticker, metodo, servizi, settori, numeri, lavori, processo, contatti, nav, footer] = await Promise.all([

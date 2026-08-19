@@ -1,10 +1,10 @@
 'use client';
 
-import Header from '../../components/Header';
-import Footer from '../../components/Footer';
-import LangDot from '../../components/LangDot';
-import ContactForm from '../../components/ContactForm';
-import { LangProvider, useLang, pick } from '../../lib/lang';
+import Header from '../../../components/Header';
+import Footer from '../../../components/Footer';
+import LangDot from '../../../components/LangDot';
+import ContactForm from '../../../components/ContactForm';
+import { LangProvider, useLang, pick } from '../../../lib/lang';
 
 const TITLE_FALLBACK = { ru: 'Запросить смету', en: 'Request a quote' };
 const LEAD_FALLBACK = {
