@@ -120,8 +120,8 @@ async function run() {
 
   const processo = STEPS.map((s) => ({ _key: s.order, _type: 'stepItem', ...s }));
   const numeri = [
-    { _key: 'anni', _type: 'statItem', value: 30, suffix: '+', label: L('Лет работы', 'Years in business') },
-    { _key: 'pezzi', _type: 'statItem', value: 500, suffix: '+', label: L('Изготовленных деталей', 'Parts manufactured') },
+    { _key: 'anni', _type: 'statItem', value: 14, suffix: '+', label: L('Лет работы', 'Years in business') },
+    { _key: 'pezzi', _type: 'statItem', value: 5000, suffix: '+', label: L('Изготовленных деталей', 'Parts manufactured') },
     { _key: 'settori', _type: 'statItem', value: 3, suffix: '', label: L('Обслуживаемых отраслей', 'Industries served') },
     { _key: 'misura', _type: 'statItem', value: 100, suffix: '%', label: L('Под заказ', 'Custom-made') },
   ];
@@ -137,7 +137,7 @@ async function run() {
     heroTitleLine2: L('к готовой', 'to a finished'),
     heroTitleLine3: L('машине.', 'machine.'),
     heroLead: L('Принесите чертёж, образец или просто опишите задачу. Мы спроектируем, изготовим и поставим машину. То, что не производим сами — закупим у проверенных поставщиков.', "Bring us a drawing, a sample, or simply describe the need. We'll design, build and deliver the machine. What we don't make ourselves, we source from trusted suppliers."),
-    heroLocation: L('Донецк · Осн. —', 'Donetsk · Est. —'),
+    heroLocation: L('Донецк', 'Donetsk'),
     heroTagline: L('Проектирование · Производство', 'Design · Production'),
     heroTags: L('Сельское хоз-во / Пищевая пром. / Тяжёлая пром.', 'Agriculture / Food industry / Heavy industry'),
     ctaPrimaryLabel: L('Запросить смету', 'Request a quote'),
