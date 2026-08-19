@@ -55,7 +55,7 @@ function Inner() {
         <span className="gift-card-front mono">РИММАКС · открой меня</span>
         <div className="gift-card-body">
           <span className="mono gift-card-eyebrow">— записка</span>
-          <p className="gift-card-text">Здесь будет текст. Потом решим какой.</p>
+          <p className="gift-card-text">Надеемся, что этот сайт поможет вам заработать много денег. Удачи!<br /><br />Аня + Анто</p>
           <button className="btn" type="button" onClick={(e) => { e.stopPropagation(); open(); }}>
             <span className="dot" />Открыть подарок
           </button>

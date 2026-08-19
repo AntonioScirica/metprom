@@ -303,8 +303,8 @@ footer{padding:64px 0 36px;border-top:1px solid var(--line);margin-top:0}
 
 @media(max-width:600px){
   .hgroup .btn.ghost{display:none}
-  header .wrap{height:72px}
-  .brand .mk{width:40px;height:40px}
+  header .wrap{height:76px}
+  .brand .mk{width:58px;height:58px}
   .stage-bar{flex-direction:column;gap:6px;align-items:flex-start}
   .stage-bar .rd{text-align:left}
   .js-hint{text-align:left}
